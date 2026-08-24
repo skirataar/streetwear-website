@@ -1,0 +1,116 @@
+// Prisma schema for Indian Streetwear Storefront
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Fit {
+  OVERSIZED
+  REGULAR
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String?
+  active      Boolean   @default(true)
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id           String           @id @default(cuid())
+  slug         String           @unique
+  name         String
+  description  String
+  basePrice    Int              // In paise (e.g. 185000 = ₹1,850.00)
+  fit          Fit              @default(OVERSIZED)
+  era          String           // e.g. "DD NATIONAL", "Y2K CYBERCAFE", "STD-ISD-PCO", "90S BOLLYWOOD", "SHARJAH CRICKET"
+  collectionId String?
+  collection   Collection?      @relation(fields: [collectionId], references: [id])
+  images       ProductImage[]
+  variants     ProductVariant[]
+  active       Boolean          @default(true)
+  featured     Boolean          @default(false)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  staticUrl String
+  videoUrl  String?
+  altText   String
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model ProductVariant {
+  id            String      @id @default(cuid())
+  productId     String
+  product       Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  size          String      // S, M, L, XL, XXL
+  colorway      String      @default("Default")
+  sku           String      @unique
+  stock         Int         @default(0)
+  priceOverride Int?        // In paise if different from basePrice
+  orderItems    OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model User {
+  id        String   @id // Matches Supabase auth.users.id UUID
+  email     String   @unique
+  name      String?
+  orders    Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id                String      @id @default(cuid())
+  userId            String?
+  user              User?       @relation(fields: [userId], references: [id])
+  email             String
+  phone             String
+  status            OrderStatus @default(PENDING)
+  items             OrderItem[]
+  subtotal          Int         // In paise
+  shipping          Int         @default(0) // In paise
+  total             Int         // In paise
+  razorpayOrderId   String?     @unique
+  razorpayPaymentId String?
+  shippingAddress   Json        // { fullName, addressLine1, addressLine2, city, state, pincode }
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String         @id @default(cuid())
+  orderId   String
+  order     Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id])
+  quantity  Int
+  unitPrice Int            // In paise snapshot at time of purchase
+}

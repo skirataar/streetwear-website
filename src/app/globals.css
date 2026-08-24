@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
+@theme {
+  --color-paper: #E9DFC7;
+  --color-ink: #221D16;
+  --color-signal: #E14522;
+  --color-tape: #D3A029;
+  --color-crt: #2E6E68;
+  --color-static: #B8AE94;
+
+  --font-display: var(--font-anton), Impact, sans-serif;
+  --font-body: var(--font-karla), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-paper: #E9DFC7;
+  --color-ink: #221D16;
+  --color-signal: #E14522;
+  --color-tape: #D3A029;
+  --color-crt: #2E6E68;
+  --color-static: #B8AE94;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #E9DFC7;
+  color: #221D16;
+  font-family: var(--font-karla), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* CRT scanlines effect */
+.crt-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.12) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Subtle CRT curvature effect on hero card */
+.crt-bezel {
+  box-shadow: inset 0 0 24px rgba(34, 29, 22, 0.35), 0 10px 30px -10px rgba(34, 29, 22, 0.4);
+}
+
+/* Halftone / Newsprint static texture pattern */
+.bg-newsprint {
+  background-image: radial-gradient(#221D16 0.75px, transparent 0.75px);
+  background-size: 8px 8px;
+}
+
+/* Indian STD Booth Signboard border style */
+.border-std {
+  border: 3px solid #221D16;
+  box-shadow: 4px 4px 0px #221D16;
+}
+
+.border-std-sm {
+  border: 2px solid #221D16;
+  box-shadow: 2px 2px 0px #221D16;
+}
+
+.border-std-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.border-std-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #221D16;
+}
+
+.border-std-hover:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #221D16;
+}
+
+/* Focus styles for keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #E14522 !important;
+  outline-offset: 2px !important;
+}
+
+/* Strict Reduced Motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-tracking {
+    animation: none !important;
+    clip-path: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .animate-marquee,
+  .animate-marquee-fast {
+    animation: none !important;
+    transform: none !important;
+  }
 }
