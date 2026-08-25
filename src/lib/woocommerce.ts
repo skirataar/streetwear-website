@@ -40,7 +40,7 @@ async function fetchWooCommerce(endpoint: string, params: Record<string, string>
     headers: {
       "Content-Type": "application/json",
     },
-    cache: "no-store", // Fetch fresh data dynamically from WooCommerce
+    cache: "no-store", // Fetch fresh live data dynamically from WooCommerce
   });
 
   if (!res.ok) {
@@ -65,6 +65,18 @@ function mapWooProductToProductData(wcProduct: any): ProductData {
     altText: img.alt || wcProduct.name,
     position: idx,
   }));
+
+  // Fallback if product has no featured image attached
+  if (images.length === 0) {
+    const match = wcProduct.description?.match(/src=["']([^"']+)["']/);
+    const fallbackUrl = match ? match[1] : `https://placehold.co/600x800/111111/FFFFFF?text=${encodeURIComponent(wcProduct.name)}`;
+    images.push({
+      id: `${wcProduct.id}-default`,
+      staticUrl: fallbackUrl,
+      altText: wcProduct.name,
+      position: 0,
+    });
+  }
 
   const sizes: ("S" | "M" | "L" | "XL" | "XXL")[] = ["S", "M", "L", "XL", "XXL"];
   const variants: ProductVariantData[] = (wcProduct.variations?.length ? wcProduct.variations : sizes).map(
