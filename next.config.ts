@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "placehold.co",
       },
+      {
+        protocol: "https",
+        hostname: "v1.thehypeco.in",
+      },
+      {
+        protocol: "https",
+        hostname: "*.thehypeco.in",
+      },
     ],
   },
 };
