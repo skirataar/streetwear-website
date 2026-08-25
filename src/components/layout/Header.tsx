@@ -40,50 +40,32 @@ export function Header() {
 
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-7 h-7 bg-ink text-white flex items-center justify-center font-display text-lg tracking-tighter border border-ink group-hover:bg-flash transition-colors">
-            PC
+          <div className="w-7 h-7 bg-ink text-white flex items-center justify-center font-display text-base tracking-tighter border border-ink group-hover:bg-flash transition-colors">
+            THC
           </div>
           <div className="flex flex-col">
             <span className="font-display text-2xl sm:text-3xl tracking-tight leading-none text-ink uppercase">
-              POSTER // CLUB
+              THE HYPE // CO.
             </span>
             <span className="font-mono text-[9px] tracking-widest text-ink/60 font-bold leading-none uppercase">
-              BHARAT STREETWEAR &#39;98
+              THE HYPE CO. STREETWEAR
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-bold tracking-wider uppercase text-ink" aria-label="Main navigation">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider uppercase text-ink" aria-label="Main navigation">
           <Link
             href="/catalog"
             className="hover:text-flash hover:underline decoration-2 underline-offset-4 transition-colors"
           >
-            All Drops
+            All Products
           </Link>
           <Link
-            href="/catalog/dd-national"
+            href="/about"
             className="hover:text-flash hover:underline decoration-2 underline-offset-4 transition-colors"
           >
-            DD National
-          </Link>
-          <Link
-            href="/catalog/std-isd-pco"
-            className="hover:text-flash hover:underline decoration-2 underline-offset-4 transition-colors"
-          >
-            STD PCO
-          </Link>
-          <Link
-            href="/catalog/y2k-cybercafe"
-            className="hover:text-flash hover:underline decoration-2 underline-offset-4 transition-colors"
-          >
-            Cybercafé
-          </Link>
-          <Link
-            href="/catalog/sharjah-cricket"
-            className="hover:text-flash hover:underline decoration-2 underline-offset-4 transition-colors"
-          >
-            Sharjah &#39;98
+            About Us
           </Link>
         </nav>
 
@@ -116,42 +98,21 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-hype border-b-2 border-ink px-4 pt-2 pb-6 space-y-3 font-mono text-sm">
           <div className="text-[10px] text-ink/60 tracking-widest uppercase font-bold border-b border-ink/20 pb-1">
-            SELECT ERA / DROP
+            NAVIGATION
           </div>
           <Link
             href="/catalog"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1.5 font-bold hover:text-flash"
           >
-            ▶ ALL DROPS (FULL CATALOGUE)
+            ▶ ALL PRODUCTS
           </Link>
           <Link
-            href="/catalog/dd-national"
+            href="/about"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-1.5 font-bold hover:text-flash"
           >
-            ▶ DD NATIONAL // TEST CARD
-          </Link>
-          <Link
-            href="/catalog/std-isd-pco"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1.5 font-bold hover:text-flash"
-          >
-            ▶ STD // ISD // PCO BOOTHS
-          </Link>
-          <Link
-            href="/catalog/y2k-cybercafe"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1.5 font-bold hover:text-flash"
-          >
-            ▶ Y2K CYBERCAFÉ 56KBPS
-          </Link>
-          <Link
-            href="/catalog/sharjah-cricket"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1.5 font-bold hover:text-flash"
-          >
-            ▶ SHARJAH &#39;98 DESERT STORM
+            ▶ ABOUT US
           </Link>
           <Link
             href="/account/orders"

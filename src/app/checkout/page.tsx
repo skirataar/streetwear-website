@@ -172,7 +172,7 @@ export default function CheckoutPage() {
         key: data.keyId || "rzp_test_placeholder",
         amount: data.amount,
         currency: "INR",
-        name: "POSTER CLUB STREETWEAR",
+        name: "THE HYPE CO. STREETWEAR",
         description: `Order #${data.orderId} • Pan-India Dispatch`,
         image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=200",
         order_id: data.razorpayOrderId.startsWith("rzp_") ? data.razorpayOrderId : undefined,

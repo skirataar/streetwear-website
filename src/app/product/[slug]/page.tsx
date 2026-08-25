@@ -22,17 +22,17 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Product Not Found // Poster Club",
+      title: "Product Not Found // THE HYPE CO.",
     };
   }
 
   const staticImage = product.images[0]?.staticUrl || "";
 
   return {
-    title: `${product.name} // Indian Streetwear Archive`,
+    title: `${product.name} // THE HYPE CO.`,
     description: product.description,
     openGraph: {
-      title: `${product.name} | Poster Club Streetwear`,
+      title: `${product.name} | THE HYPE CO. Streetwear`,
       description: product.description,
       images: [
         {

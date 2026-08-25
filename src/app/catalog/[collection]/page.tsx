@@ -25,16 +25,16 @@ export async function generateMetadata({
   const col = collections.find((c) => c.slug === slug);
 
   if (!col) {
-    return { title: "Collection Not Found // Poster Club" };
+    return { title: "Collection Not Found // THE HYPE CO." };
   }
 
   return {
     title: `${col.name} // Indian Streetwear Drop`,
     description:
       col.description ||
-      `Shop the ${col.name} collection — heavyweight Indian streetwear from Poster Club.`,
+      `Shop the ${col.name} collection — heavyweight Indian streetwear from THE HYPE CO.`,
     openGraph: {
-      title: `${col.name} | Poster Club Streetwear`,
+      title: `${col.name} | THE HYPE CO. Streetwear`,
       description: col.description || `Shop the ${col.name} collection.`,
     },
   };

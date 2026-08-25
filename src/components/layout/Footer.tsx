@@ -44,7 +44,7 @@ export function Footer() {
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2">
               <span className="font-display text-3xl uppercase tracking-tight text-white">
-                POSTER // CLUB
+                THE HYPE // CO.
               </span>
               <span className="bg-flash text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-sm">
                 EST. 1998
@@ -108,7 +108,7 @@ export function Footer() {
               <div>HYDERABAD: 040</div>
             </div>
             <div className="pt-2 text-xs text-neutral-400">
-              <div>Support: help@posterclub.in</div>
+              <div>Support: help@thehypeco.in</div>
               <div className="text-[11px] text-neutral-500">Hours: Mon-Sat 10:00 - 19:00 IST</div>
             </div>
           </div>
@@ -117,7 +117,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-neutral-500 gap-4">
           <div>
-            © {new Date().getFullYear()} POSTER CLUB STREETWEAR. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} THE HYPE CO. STREETWEAR. ALL RIGHTS RESERVED.
           </div>
           <div className="flex items-center gap-4">
             <span>RAZORPAY VERIFIED</span>

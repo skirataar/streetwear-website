@@ -36,7 +36,7 @@ function SuccessContent() {
             ORDER CONFIRMED
           </h1>
           <div className="text-xs font-bold text-ink/50 uppercase">
-            POSTER CLUB STREETWEAR • STD / ISD RECEIPT
+            THE HYPE CO. STREETWEAR • STD / ISD RECEIPT
           </div>
         </div>
 

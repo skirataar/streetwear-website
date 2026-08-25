@@ -9,18 +9,21 @@ import { ArrowRight, Radio, Flame } from "lucide-react";
 export const revalidate = 60; // ISR revalidate every 60s
 
 export default async function HomePage() {
-  const [collections, featuredProducts] = await Promise.all([
+  const [collections, featuredProducts, allProducts] = await Promise.all([
     getCollections(),
     getProducts({ featuredOnly: true }),
+    getProducts(),
   ]);
+
+  const latestProduct = allProducts.length > 0 ? allProducts[0] : (featuredProducts.length > 0 ? featuredProducts[0] : null);
 
   return (
     <div className="flex flex-col w-full">
       {/* 1. CRT Hero Section */}
-      <Hero />
+      <Hero latestProduct={latestProduct} />
 
-      {/* 2. Dynamic Collection Marquee (Pulls from live Collection data) */}
-      <Marquee collections={collections} />
+      {/* 2. Dynamic Collection Marquee (Pulls from live Collection & Product data) */}
+      <Marquee collections={collections} products={allProducts} />
 
       {/* 3. Featured Drops Section — sits on hype green (body default) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
@@ -40,7 +43,7 @@ export default async function HomePage() {
             href="/catalog"
             className="inline-flex items-center gap-2 bg-ink text-white hover:bg-flash font-mono font-bold text-xs uppercase px-4 py-2.5 border border-ink transition-colors self-start md:self-auto"
           >
-            <span>VIEW COMPLETE ARCHIVE ({collections.length} ERAS)</span>
+            <span>VIEW COMPLETE ARCHIVE</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

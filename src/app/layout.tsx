@@ -27,11 +27,11 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "POSTER CLUB // Indian 90s & 2000s Streetwear Archive",
+  title: "THE HYPE CO. // Indian 90s & 2000s Streetwear Archive",
   description: "Heavyweight oversized & regular streetwear inspired by DD National broadcast test patterns, cassette culture, STD booths, and Sharjah cricket glory.",
-  keywords: ["Indian streetwear", "oversized t-shirts", "DD National", "STD PCO", "90s Indian fashion", "vintage streetwear India"],
+  keywords: ["thehypeco", "Indian streetwear", "oversized t-shirts", "DD National", "STD PCO", "90s Indian fashion", "vintage streetwear India"],
   openGraph: {
-    title: "POSTER CLUB // 90s Indian Pop Culture Streetwear",
+    title: "THE HYPE CO. // 90s Indian Pop Culture Streetwear",
     description: "Heavyweight streetwear inspired by DD National, cassette culture, STD booths, and 90s nostalgia.",
     type: "website",
     locale: "en_IN",

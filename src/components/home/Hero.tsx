@@ -2,8 +2,19 @@ import React from "react";
 import Link from "next/link";
 import { TrackingMedia } from "@/components/ui/TrackingMedia";
 import { ArrowUpRight, Flame } from "lucide-react";
+import { ProductData } from "@/lib/mock-data";
 
-export function Hero() {
+interface HeroProps {
+  latestProduct?: ProductData | null;
+}
+
+export function Hero({ latestProduct }: HeroProps) {
+  const dropLink = latestProduct ? `/product/${latestProduct.slug}` : "/catalog";
+  const dropBadge = latestProduct
+    ? `LATEST DROP // ${latestProduct.name.toUpperCase()}`
+    : "THE HYPE CO. // MONSOON ARCHIVE";
+  const heroImage = latestProduct?.images?.[0]?.staticUrl || "/images/hero/hero-1.jpg";
+
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
       {/* CRT Bezel Frame — thick ink border on hype green page */}
@@ -16,7 +27,7 @@ export function Hero() {
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1.5 text-hype font-bold">
               <span className="w-2 h-2 rounded-full bg-hype animate-ping" />
-              CH-04 DD NATIONAL
+              {latestProduct ? `LIVE DROP: ${latestProduct.name.toUpperCase()}` : "THE HYPE CO. BROADCAST"}
             </span>
             <span className="hidden sm:inline text-white/30">|</span>
             <span className="hidden sm:inline">PAL-B // 625 LINES</span>
@@ -34,9 +45,9 @@ export function Hero() {
           {/* Background Full-bleed Shot with Tracking Glitch */}
           <div className="absolute inset-0 z-0">
             <TrackingMedia
-              staticUrl="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=1600&auto=format&fit=crop&q=85"
-              videoUrl="https://res.cloudinary.com/demo/video/upload/q_auto,vc_auto,w_1200/dog.mp4"
-              altText="Indian Streetwear 90s Broadcast Collection Hero"
+              staticUrl={heroImage}
+              videoUrl={latestProduct?.images?.[0]?.videoUrl || "https://res.cloudinary.com/demo/video/upload/q_auto,vc_auto,w_1200/dog.mp4"}
+              altText={latestProduct?.name || "Indian Streetwear Broadcast Collection Hero"}
               aspectRatio="aspect-auto h-full w-full"
               priority={true}
               className="opacity-75 h-full w-full object-cover"
@@ -49,7 +60,7 @@ export function Hero() {
           <div className="relative z-20 max-w-4xl space-y-4 sm:space-y-6">
             <div className="inline-flex items-center gap-2 bg-flash text-white px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase border border-white/20 shadow-sm">
               <Flame className="w-3.5 h-3.5" />
-              DROP #04 // MONSOON ARCHIVE
+              <span>{dropBadge}</span>
             </div>
 
             {/* Large Anton Headline */}
@@ -60,24 +71,26 @@ export function Hero() {
             </h1>
 
             <p className="font-body text-base sm:text-xl text-white/90 max-w-2xl font-medium leading-relaxed">
-              Heavyweight 240 GSM tees inspired by Doordarshan test signals, cassette rewind hacks, yellow STD booths, and Sharjah cricket glory.
+              {latestProduct?.description
+                ? latestProduct.description
+                : "Heavyweight 240 GSM tees inspired by Doordarshan test signals, cassette rewind hacks, yellow STD booths, and Sharjah cricket glory."}
             </p>
 
             {/* CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
-                href="/catalog"
+                href={dropLink}
                 className="inline-flex items-center gap-2 bg-flash hover:bg-flash/90 text-white font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-white/20 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg uppercase"
               >
-                <span>SHOP THE DROP</span>
+                <span>{latestProduct ? "SHOP THIS DROP" : "SHOP ALL DROPS"}</span>
                 <ArrowUpRight className="w-5 h-5" />
               </Link>
 
               <Link
-                href="/catalog/dd-national"
+                href="/catalog"
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-white/40 transition-all uppercase"
               >
-                <span>VIEW DD NATIONAL</span>
+                <span>VIEW ALL DROPS</span>
               </Link>
             </div>
           </div>
