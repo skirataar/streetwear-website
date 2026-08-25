@@ -77,9 +77,16 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             <span className="text-[10px] font-mono uppercase text-ink/50 font-bold tracking-widest">
               PRICE
             </span>
-            <span className="font-mono text-base sm:text-lg font-bold text-ink tracking-tight">
-              {formatPaise(product.basePrice)}
-            </span>
+            <div className="flex items-baseline gap-2 font-mono">
+              <span className="text-base sm:text-lg font-bold text-ink tracking-tight">
+                {formatPaise(product.basePrice)}
+              </span>
+              {product.originalPrice && product.originalPrice > product.basePrice && (
+                <span className="text-xs font-bold text-ink/40 line-through">
+                  {formatPaise(product.originalPrice)}
+                </span>
+              )}
+            </div>
           </div>
 
           <Link

@@ -82,14 +82,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </Link>
           </li>
           <li>/</li>
-          {product.collectionSlug && (
+          {product.collectionSlug && product.collectionName && (
             <>
               <li>
                 <Link
                   href={`/catalog/${product.collectionSlug}`}
                   className="hover:text-flash transition-colors uppercase"
                 >
-                  {product.era}
+                  {product.collectionName}
                 </Link>
               </li>
               <li>/</li>
@@ -116,7 +116,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="lg:col-span-5 space-y-6">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1.5">
-              <span>{product.era} // DROP #04</span>
+              <span>THE HYPE CO. // {product.collectionName || product.fit || "STREETWEAR"} RELEASE</span>
             </div>
             <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink leading-tight">
               {product.name}

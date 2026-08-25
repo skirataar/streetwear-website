@@ -56,8 +56,11 @@ async function fetchWooCommerce(endpoint: string, params: Record<string, string>
  * Map WooCommerce Product to App ProductData format
  */
 function mapWooProductToProductData(wcProduct: any): ProductData {
-  const basePriceRupees = parseFloat(wcProduct.price || wcProduct.regular_price || "0");
-  const basePricePaise = Math.round(basePriceRupees * 100);
+  const currentPriceRupees = parseFloat(wcProduct.price || wcProduct.sale_price || wcProduct.regular_price || "0");
+  const regularPriceRupees = parseFloat(wcProduct.regular_price || "0");
+
+  const basePricePaise = Math.round(currentPriceRupees * 100);
+  const originalPricePaise = regularPriceRupees > currentPriceRupees ? Math.round(regularPriceRupees * 100) : null;
 
   const images: ProductImageData[] = (wcProduct.images || []).map((img: any, idx: number) => ({
     id: String(img.id || idx),
@@ -95,7 +98,7 @@ function mapWooProductToProductData(wcProduct: any): ProductData {
     }
   );
 
-  const primaryCategory = wcProduct.categories?.[0];
+  const primaryCategory = wcProduct.categories?.find((c: any) => c.slug !== "uncategorized");
 
   return {
     id: String(wcProduct.id),
@@ -103,8 +106,9 @@ function mapWooProductToProductData(wcProduct: any): ProductData {
     name: wcProduct.name,
     description: wcProduct.description?.replace(/<[^>]*>/g, "") || wcProduct.short_description?.replace(/<[^>]*>/g, "") || "",
     basePrice: basePricePaise,
+    originalPrice: originalPricePaise,
     fit: wcProduct.attributes?.find((a: any) => a.name.toLowerCase() === "fit")?.options?.[0]?.toUpperCase() === "REGULAR" ? "REGULAR" : "OVERSIZED",
-    era: wcProduct.attributes?.find((a: any) => a.name.toLowerCase() === "era")?.options?.[0] || "90S / Y2K",
+    era: wcProduct.attributes?.find((a: any) => a.name.toLowerCase() === "era")?.options?.[0] || "STREETWEAR",
     collectionId: primaryCategory ? String(primaryCategory.id) : "",
     collectionSlug: primaryCategory?.slug,
     collectionName: primaryCategory?.name,

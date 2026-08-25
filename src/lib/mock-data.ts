@@ -30,6 +30,7 @@ export interface ProductData {
   name: string;
   description: string;
   basePrice: number; // in paise (e.g. 185000 = ₹1,850.00)
+  originalPrice?: number | null; // in paise (for slashed original MRP)
   fit: "OVERSIZED" | "REGULAR";
   era: string;
   collectionId: string;

@@ -51,11 +51,18 @@ export function VariantSelector({ product }: VariantSelectorProps) {
     <div className="space-y-6 font-mono">
       {/* Price Display */}
       <div className="border-b-2 border-ink pb-4">
-        <div className="text-xs text-ink/60 font-bold uppercase tracking-wider">
+        <div className="text-xs text-ink/60 font-bold uppercase tracking-wider mb-1">
           MRP (INCL. OF ALL TAXES)
         </div>
-        <div className="text-3xl sm:text-4xl font-bold font-mono text-ink tracking-tight">
-          {formatPaise(currentPrice)}
+        <div className="flex items-baseline gap-3">
+          <span className="text-3xl sm:text-4xl font-bold font-mono text-ink tracking-tight">
+            {formatPaise(currentPrice)}
+          </span>
+          {product.originalPrice && product.originalPrice > currentPrice && (
+            <span className="text-xl sm:text-2xl font-bold font-mono text-ink/40 line-through">
+              {formatPaise(product.originalPrice)}
+            </span>
+          )}
         </div>
       </div>
 
@@ -116,7 +123,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
               ● HURRY: ONLY {activeVariant.stock} UNITS LEFT IN BATCH
             </span>
           ) : (
-            <span className="text-hype uppercase" style={{ textShadow: "0 0 1px #141414" }}>● IN STOCK // READY TO DISPATCH</span>
+            <span className="text-flash uppercase font-bold">● IN STOCK // READY TO DISPATCH</span>
           )}
         </div>
       </div>
