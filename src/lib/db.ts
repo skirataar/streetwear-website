@@ -8,11 +8,48 @@
  * All prices are integers in paise — never float.
  */
 
-export {
-  getCollections,
-  getProducts,
-  getProductBySlug,
+import {
+  getCollections as getMockCollections,
+  getProducts as getMockProducts,
+  getProductBySlug as getMockProductBySlug,
 } from "@/lib/mock-data";
+import {
+  isWooCommerceConfigured,
+  getWooCommerceCollections,
+  getWooCommerceProducts,
+  getWooCommerceProductBySlug,
+} from "@/lib/woocommerce";
+
+export async function getCollections() {
+  if (isWooCommerceConfigured()) {
+    const wooCols = await getWooCommerceCollections();
+    if (wooCols.length > 0) return wooCols;
+  }
+  return getMockCollections();
+}
+
+export async function getProducts(options?: {
+  featuredOnly?: boolean;
+  collectionSlug?: string;
+  fit?: string;
+  size?: string;
+  minPrice?: number;
+  maxPrice?: number;
+}) {
+  if (isWooCommerceConfigured()) {
+    const wooProducts = await getWooCommerceProducts(options);
+    if (wooProducts.length > 0) return wooProducts;
+  }
+  return getMockProducts(options);
+}
+
+export async function getProductBySlug(slug: string) {
+  if (isWooCommerceConfigured()) {
+    const wooProduct = await getWooCommerceProductBySlug(slug);
+    if (wooProduct) return wooProduct;
+  }
+  return getMockProductBySlug(slug);
+}
 
 export type {
   CollectionData,
@@ -20,3 +57,4 @@ export type {
   ProductImageData,
   ProductVariantData,
 } from "@/lib/mock-data";
+
