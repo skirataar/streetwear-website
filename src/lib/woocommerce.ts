@@ -40,7 +40,7 @@ async function fetchWooCommerce(endpoint: string, params: Record<string, string>
     headers: {
       "Content-Type": "application/json",
     },
-    cache: "no-store", // Fetch fresh live data dynamically from WooCommerce
+    next: { revalidate: 10 }, // Revalidate WooCommerce data every 10s
   });
 
   if (!res.ok) {
