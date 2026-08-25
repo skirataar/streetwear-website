@@ -301,14 +301,15 @@ export const MOCK_PRODUCTS: ProductData[] = [
 
 export async function getCollections(): Promise<CollectionData[]> {
   try {
-    // If prisma is connected and tables exist, attempt to fetch live
-    const { prisma } = await import("@/lib/prisma");
-    const collections = await prisma.collection.findMany({
-      where: { active: true },
-      orderBy: { createdAt: "asc" },
-    });
-    if (collections && collections.length > 0) {
-      return collections;
+    if (process.env.DATABASE_URL) {
+      const { prisma } = await import("@/lib/prisma");
+      const collections = await prisma.collection.findMany({
+        where: { active: true },
+        orderBy: { createdAt: "asc" },
+      });
+      if (collections && collections.length > 0) {
+        return collections;
+      }
     }
   } catch {
     // Fallback gracefully to mock data
@@ -325,8 +326,9 @@ export async function getProducts(options?: {
   featuredOnly?: boolean;
 }): Promise<ProductData[]> {
   try {
-    const { prisma } = await import("@/lib/prisma");
-    const where: any = { active: true };
+    if (process.env.DATABASE_URL) {
+      const { prisma } = await import("@/lib/prisma");
+      const where: any = { active: true };
 
     if (options?.featuredOnly) {
       where.featured = true;
@@ -361,37 +363,38 @@ export async function getProducts(options?: {
       orderBy: { createdAt: "desc" },
     });
 
-    if (products && products.length > 0) {
-      return products.map((p) => ({
-        id: p.id,
-        slug: p.slug,
-        name: p.name,
-        description: p.description,
-        basePrice: p.basePrice,
-        fit: p.fit as "OVERSIZED" | "REGULAR",
-        era: p.era,
-        collectionId: p.collectionId || "",
-        collectionSlug: p.collection?.slug,
-        collectionName: p.collection?.name,
-        active: p.active,
-        featured: p.featured,
-        images: p.images.map((img) => ({
-          id: img.id,
-          staticUrl: img.staticUrl,
-          videoUrl: img.videoUrl || undefined,
-          altText: img.altText,
-          position: img.position,
-        })),
-        variants: p.variants.map((v) => ({
-          id: v.id,
-          productId: v.productId,
-          size: v.size as any,
-          colorway: v.colorway,
-          sku: v.sku,
-          stock: v.stock,
-          priceOverride: v.priceOverride,
-        })),
-      }));
+      if (products && products.length > 0) {
+        return products.map((p) => ({
+          id: p.id,
+          slug: p.slug,
+          name: p.name,
+          description: p.description,
+          basePrice: p.basePrice,
+          fit: p.fit as "OVERSIZED" | "REGULAR",
+          era: p.era,
+          collectionId: p.collectionId || "",
+          collectionSlug: p.collection?.slug,
+          collectionName: p.collection?.name,
+          active: p.active,
+          featured: p.featured,
+          images: p.images.map((img) => ({
+            id: img.id,
+            staticUrl: img.staticUrl,
+            videoUrl: img.videoUrl || undefined,
+            altText: img.altText,
+            position: img.position,
+          })),
+          variants: p.variants.map((v) => ({
+            id: v.id,
+            productId: v.productId,
+            size: v.size as any,
+            colorway: v.colorway,
+            sku: v.sku,
+            stock: v.stock,
+            priceOverride: v.priceOverride,
+          })),
+        }));
+      }
     }
   } catch {
     // Fallback to mock data with filter logic
@@ -424,8 +427,9 @@ export async function getProducts(options?: {
 
 export async function getProductBySlug(slug: string): Promise<ProductData | null> {
   try {
-    const { prisma } = await import("@/lib/prisma");
-    const product = await prisma.product.findUnique({
+    if (process.env.DATABASE_URL) {
+      const { prisma } = await import("@/lib/prisma");
+      const product = await prisma.product.findUnique({
       where: { slug },
       include: {
         images: { orderBy: { position: "asc" } },
@@ -465,6 +469,7 @@ export async function getProductBySlug(slug: string): Promise<ProductData | null
         })),
       };
     }
+  }
   } catch {
     // Fallback to mock lookup
   }
