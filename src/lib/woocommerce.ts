@@ -2,43 +2,50 @@ import { CollectionData, ProductData, ProductImageData, ProductVariantData } fro
 
 /**
  * WooCommerce REST API Integration Helper
- * Connects Next.js storefront to Hostinger WooCommerce backend.
+ * Connects Next.js storefront dynamically to Hostinger WooCommerce backend.
  */
 
-const WORDPRESS_URL = process.env.NEXT_PUBLIC_WORDPRESS_URL || process.env.WOOCOMMERCE_URL || "";
-const CONSUMER_KEY = process.env.WOOCOMMERCE_CONSUMER_KEY || "";
-const CONSUMER_SECRET = process.env.WOOCOMMERCE_CONSUMER_SECRET || "";
+function getWooConfig() {
+  return {
+    url: (process.env.NEXT_PUBLIC_WORDPRESS_URL || process.env.WOOCOMMERCE_URL || "").replace(/\/$/, ""),
+    key: process.env.WOOCOMMERCE_CONSUMER_KEY || "",
+    secret: process.env.WOOCOMMERCE_CONSUMER_SECRET || "",
+  };
+}
 
 export function isWooCommerceConfigured(): boolean {
-  return Boolean(WORDPRESS_URL && CONSUMER_KEY && CONSUMER_SECRET);
+  const { url, key, secret } = getWooConfig();
+  return Boolean(url && key && secret);
 }
 
 /**
- * Helper to fetch data from WooCommerce REST API v3
+ * Helper to fetch data dynamically from WooCommerce REST API v3
  */
 async function fetchWooCommerce(endpoint: string, params: Record<string, string> = {}) {
-  if (!isWooCommerceConfigured()) {
+  const { url: baseUrl, key: consumerKey, secret: consumerSecret } = getWooConfig();
+
+  if (!baseUrl || !consumerKey || !consumerSecret) {
     throw new Error("WooCommerce API keys or WordPress URL not configured.");
   }
 
-  const baseUrl = WORDPRESS_URL.replace(/\/$/, "");
   const url = new URL(`${baseUrl}/wp-json/wc/v3/${endpoint}`);
+  url.searchParams.set("consumer_key", consumerKey);
+  url.searchParams.set("consumer_secret", consumerSecret);
 
-  url.searchParams.set("consumer_key", CONSUMER_KEY);
-  url.searchParams.set("consumer_secret", CONSUMER_SECRET);
-
-  Object.entries(params).forEach(([key, value]) => {
-    url.searchParams.set(key, value);
+  Object.entries(params).forEach(([k, v]) => {
+    url.searchParams.set(k, v);
   });
 
   const res = await fetch(url.toString(), {
     headers: {
       "Content-Type": "application/json",
     },
-    next: { revalidate: 60 }, // Cache revalidation every 60 seconds
+    cache: "no-store", // Fetch fresh data dynamically from WooCommerce
   });
 
   if (!res.ok) {
+    const errorText = await res.text();
+    console.error(`[WooCommerce API Error ${res.status}]:`, errorText);
     throw new Error(`WooCommerce API Error: ${res.status} ${res.statusText}`);
   }
 
@@ -49,7 +56,6 @@ async function fetchWooCommerce(endpoint: string, params: Record<string, string>
  * Map WooCommerce Product to App ProductData format
  */
 function mapWooProductToProductData(wcProduct: any): ProductData {
-  // WooCommerce price is string in rupees, convert to paise (integers)
   const basePriceRupees = parseFloat(wcProduct.price || wcProduct.regular_price || "0");
   const basePricePaise = Math.round(basePriceRupees * 100);
 
@@ -60,7 +66,6 @@ function mapWooProductToProductData(wcProduct: any): ProductData {
     position: idx,
   }));
 
-  // Default variants if attributes/variations not specified
   const sizes: ("S" | "M" | "L" | "XL" | "XXL")[] = ["S", "M", "L", "XL", "XXL"];
   const variants: ProductVariantData[] = (wcProduct.variations?.length ? wcProduct.variations : sizes).map(
     (item: any, idx: number) => {
@@ -104,15 +109,18 @@ function mapWooProductToProductData(wcProduct: any): ProductData {
 export async function getWooCommerceCollections(): Promise<CollectionData[]> {
   try {
     const categories = await fetchWooCommerce("products/categories", { per_page: "50" });
-    return categories
-      .filter((c: any) => c.slug !== "uncategorized")
-      .map((c: any) => ({
-        id: String(c.id),
-        slug: c.slug,
-        name: c.name,
-        description: c.description || null,
-        active: true,
-      }));
+    if (Array.isArray(categories)) {
+      return categories
+        .filter((c: any) => c.slug !== "uncategorized")
+        .map((c: any) => ({
+          id: String(c.id),
+          slug: c.slug,
+          name: c.name,
+          description: c.description || null,
+          active: true,
+        }));
+    }
+    return [];
   } catch (error) {
     console.error("[WooCommerce] Error fetching collections:", error);
     return [];
@@ -127,12 +135,14 @@ export async function getWooCommerceProducts(options?: {
   collectionSlug?: string;
 }): Promise<ProductData[]> {
   try {
-    const params: Record<string, string> = { per_page: "50", status: "publish" };
+    const params: Record<string, string> = { per_page: "50" };
     if (options?.featuredOnly) {
       params.featured = "true";
     }
 
     const wcProducts = await fetchWooCommerce("products", params);
+    if (!Array.isArray(wcProducts)) return [];
+
     let mapped = wcProducts.map(mapWooProductToProductData);
 
     if (options?.collectionSlug) {
@@ -152,7 +162,7 @@ export async function getWooCommerceProducts(options?: {
 export async function getWooCommerceProductBySlug(slug: string): Promise<ProductData | null> {
   try {
     const wcProducts = await fetchWooCommerce("products", { slug });
-    if (wcProducts && wcProducts.length > 0) {
+    if (Array.isArray(wcProducts) && wcProducts.length > 0) {
       return mapWooProductToProductData(wcProducts[0]);
     }
     return null;

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { items, customer, razorpayPaymentId, razorpayOrderId } = body;
+    const { items, customer } = body;
 
     const WORDPRESS_URL = (process.env.NEXT_PUBLIC_WORDPRESS_URL || process.env.WOOCOMMERCE_URL || "").replace(/\/$/, "");
     const CONSUMER_KEY = process.env.WOOCOMMERCE_CONSUMER_KEY || "";
@@ -23,29 +23,26 @@ export async function POST(req: Request) {
     }));
 
     const orderData = {
-      payment_method: "razorpay",
-      payment_method_title: "Razorpay",
-      set_paid: true,
-      transaction_id: razorpayPaymentId || "",
+      set_paid: false,
       billing: {
-        first_name: customer?.name || "Customer",
+        first_name: customer?.fullName || customer?.name || "Customer",
         email: customer?.email || "customer@example.com",
         phone: customer?.phone || "",
+        address_1: customer?.addressLine1 || customer?.address || "",
+        address_2: customer?.addressLine2 || "",
+        city: customer?.city || "",
+        state: customer?.state || "",
+        postcode: customer?.pincode || "",
       },
       shipping: {
-        first_name: customer?.name || "Customer",
-        address_1: customer?.address || "",
+        first_name: customer?.fullName || customer?.name || "Customer",
+        address_1: customer?.addressLine1 || customer?.address || "",
+        address_2: customer?.addressLine2 || "",
         city: customer?.city || "",
         state: customer?.state || "",
         postcode: customer?.pincode || "",
       },
       line_items: lineItems,
-      meta_data: [
-        {
-          key: "razorpay_order_id",
-          value: razorpayOrderId || "",
-        },
-      ],
     };
 
     const url = new URL(`${WORDPRESS_URL}/wp-json/wc/v3/orders`);
@@ -62,14 +59,18 @@ export async function POST(req: Request) {
 
     if (!res.ok) {
       const err = await res.text();
-      console.error("[WooCommerce API] Order Sync Error:", err);
+      console.error("[WooCommerce API] Order Creation Error:", err);
       return NextResponse.json({ success: false, error: err }, { status: 500 });
     }
 
     const data = await res.json();
-    return NextResponse.json({ success: true, wooOrderId: data.id });
+    return NextResponse.json({
+      success: true,
+      wooOrderId: data.id,
+      checkoutUrl: data.payment_url || `${WORDPRESS_URL}/checkout/order-pay/${data.id}/?pay_for_order=true&key=${data.order_key}`,
+    });
   } catch (error: any) {
-    console.error("[WooCommerce Sync Route Error]:", error);
+    console.error("[WooCommerce Order Route Error]:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }

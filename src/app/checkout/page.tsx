@@ -99,7 +99,43 @@ export default function CheckoutPage() {
     setIsLoading(true);
 
     try {
-      // Step 1: Create Order on Server
+      // Step 1: Attempt WooCommerce Checkout Redirect for WooCommerce Payment Gateways
+      try {
+        const wooRes = await fetch("/api/woocommerce/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            items: items.map((it) => ({
+              variantId: it.variantId,
+              productId: it.productId,
+              productSlug: it.productSlug,
+              quantity: it.quantity,
+              price: it.price,
+            })),
+            customer: {
+              fullName: formData.fullName,
+              email: formData.email,
+              phone: formData.phone,
+              addressLine1: formData.addressLine1,
+              addressLine2: formData.addressLine2,
+              city: formData.city,
+              state: formData.state,
+              pincode: formData.pincode,
+            },
+          }),
+        });
+
+        const wooData = await wooRes.json();
+        if (wooRes.ok && wooData.checkoutUrl) {
+          clearCart();
+          window.location.href = wooData.checkoutUrl;
+          return;
+        }
+      } catch {
+        // Fallback to Razorpay direct server modal
+      }
+
+      // Step 2: Fallback Order Creation
       const res = await fetch("/api/razorpay/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
