@@ -56,76 +56,84 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 4. Cultural Storytelling / Era Selector Banner — ink section */}
+      {/* 4. New Arrivals & Dynamic Product Showcase — ink section */}
       <section className="bg-ink text-white py-16 border-y-4 border-flash relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
             <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest">
-              // NOSTALGIA ARCHIVED IN COTTON
+              // FREQUENCY BROADCAST ARCHIVE
             </span>
             <h2 className="font-display text-4xl sm:text-6xl uppercase tracking-tight text-white">
-              THE 90S &amp; 2000S BHARAT EXPERIENCE
+              NEW ARRIVALS
             </h2>
             <p className="font-body text-sm sm:text-base text-neutral-400 leading-relaxed">
-              Before algorithms and high-speed fibre, culture lived in physical spaces. Every tee in our collection is an ode to the sounds, screens, and signage that shaped a generation.
+              Heavyweight 240+ GSM streetwear crafted with high-density graphics, boxy oversized drapes, and Indian subculture nostalgia.
             </p>
           </div>
 
-          {/* Era Cards Grid */}
+          {/* Dynamic 3-Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-            {/* DD National Card */}
-            <div className="bg-white/5 border-2 border-white/10 p-6 space-y-3 relative group hover:border-hype transition-colors">
-              <div className="text-hype text-lg font-bold font-display">01 // DOORDARSHAN</div>
-              <h3 className="font-display text-2xl uppercase tracking-tight text-white">
-                TEST BAR CALIBRATION
-              </h3>
-              <p className="text-neutral-400 font-body text-xs leading-relaxed">
-                The hypnotic electronic drone before evening transmission. Circular test cards tuned by rabbit-ear antennae across every Indian living room.
-              </p>
-              <Link
-                href="/catalog/dd-national"
-                className="inline-flex items-center gap-1.5 text-hype hover:text-white font-bold uppercase pt-2"
-              >
-                <span>EXPLORE ERA</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+            {[0, 1, 2].map((idx) => {
+              const product = allProducts[idx];
+              const isAvailable = Boolean(product);
+              const cardBorder = idx % 2 === 0 ? "hover:border-hype" : "hover:border-flash";
+              const accentColor = idx % 2 === 0 ? "text-hype" : "text-flash";
 
-            {/* STD PCO Card */}
-            <div className="bg-white/5 border-2 border-white/10 p-6 space-y-3 relative group hover:border-flash transition-colors">
-              <div className="text-flash text-lg font-bold font-display">02 // STD BOOTHS</div>
-              <h3 className="font-display text-2xl uppercase tracking-tight text-white">
-                1-RUPEE COIN DROPS
-              </h3>
-              <p className="text-neutral-400 font-body text-xs leading-relaxed">
-                Yellow backlit signs in every street corner, dial-tone beeps, and the frantic race to speak before the red pulse timer hit zero.
-              </p>
-              <Link
-                href="/catalog/std-isd-pco"
-                className="inline-flex items-center gap-1.5 text-flash hover:text-white font-bold uppercase pt-2"
-              >
-                <span>EXPLORE ERA</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+              if (isAvailable && product) {
+                return (
+                  <div
+                    key={product.id}
+                    className={`bg-white/5 border-2 border-white/10 p-6 space-y-3 relative group ${cardBorder} transition-colors flex flex-col justify-between`}
+                  >
+                    <div className="space-y-3">
+                      <div className={`${accentColor} text-lg font-bold font-display uppercase`}>
+                        0{idx + 1} // {product.fit || "OVERSIZED"} DROP
+                      </div>
+                      <h3 className="font-display text-2xl uppercase tracking-tight text-white line-clamp-1">
+                        {product.name}
+                      </h3>
+                      <p className="text-neutral-400 font-body text-xs leading-relaxed line-clamp-3">
+                        {product.description || "Heavyweight 240+ GSM Indian streetwear tee. Built for structural drape and long-lasting durability."}
+                      </p>
+                    </div>
+                    <div className="pt-4">
+                      <Link
+                        href={`/product/${product.slug}`}
+                        className={`inline-flex items-center gap-1.5 ${accentColor} hover:text-white font-bold uppercase`}
+                      >
+                        <span>VIEW PRODUCT</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </div>
+                );
+              }
 
-            {/* Cybercafé Card */}
-            <div className="bg-white/5 border-2 border-white/10 p-6 space-y-3 relative group hover:border-hype transition-colors">
-              <div className="text-hype text-lg font-bold font-display">03 // CYBERCAFÉ</div>
-              <h3 className="font-display text-2xl uppercase tracking-tight text-white">
-                56KBPS DIAL-UP ERA
-              </h3>
-              <p className="text-neutral-400 font-body text-xs leading-relaxed">
-                Curtained wooden cubicles, screeching modems, Yahoo! Messenger chat rooms, Winamp visualizers, and 1.44MB floppy disk archives.
-              </p>
-              <Link
-                href="/catalog/y2k-cybercafe"
-                className="inline-flex items-center gap-1.5 text-hype hover:text-white font-bold uppercase pt-2"
-              >
-                <span>EXPLORE ERA</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+              return (
+                <div
+                  key={`coming-soon-${idx}`}
+                  className="bg-white/5 border-2 border-white/10 p-6 space-y-3 relative group hover:border-hype transition-colors flex flex-col justify-between opacity-80"
+                >
+                  <div className="space-y-3">
+                    <div className="text-neutral-500 text-lg font-bold font-display uppercase">
+                      0{idx + 1} // NEXT DROP
+                    </div>
+                    <h3 className="font-display text-2xl uppercase tracking-tight text-white/70">
+                      COMING SOON...
+                    </h3>
+                    <p className="text-neutral-400 font-body text-xs leading-relaxed">
+                      Next heavyweight 240+ GSM release is currently in production. Join the broadcast list below for early drop passwords.
+                    </p>
+                  </div>
+                  <div className="pt-4">
+                    <span className="inline-flex items-center gap-1.5 text-neutral-500 font-bold uppercase cursor-default">
+                      <span>COMING SOON</span>
+                      <ArrowRight className="w-3.5 h-3.5 opacity-40" />
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
