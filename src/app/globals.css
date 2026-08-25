@@ -2,7 +2,7 @@
 
 @theme {
   /* thehypeco.in 4-token palette */
-  --color-hype: #46E621;
+  --color-hype: #c5fe02;
   --color-ink: #141414;
   --color-flash: #F0175C;
 
@@ -12,7 +12,7 @@
 }
 
 :root {
-  --color-hype: #46E621;
+  --color-hype: #c5fe02;
   --color-ink: #141414;
   --color-flash: #F0175C;
 }
@@ -22,7 +22,7 @@
 }
 
 body {
-  background-color: #46E621;
+  background-color: #c5fe02;
   color: #141414;
   font-family: var(--font-karla), sans-serif;
   -webkit-font-smoothing: antialiased;

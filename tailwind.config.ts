@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         // thehypeco.in palette — 4 tokens only
-        hype: "#46E621",   // primary bg (full-bleed green sections)
+        hype: "#c5fe02",   // primary bg (full-bleed green sections)
         ink: "#141414",    // alternate section bg + borders + text on hype
         flash: "#F0175C",  // CTA buttons only (Add to Cart, Shop the Drop)
         // white and neutral-400 from Tailwind core cover the rest

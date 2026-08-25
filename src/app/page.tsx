@@ -133,7 +133,7 @@ export default async function HomePage() {
       {/* 5. Newsletter / Drop Alert — ink section (hard cut from hype) */}
       <section className="bg-ink text-white py-16 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-std p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8" style={{ borderColor: "#46E621", boxShadow: "4px 4px 0px #46E621" }}>
+          <div className="border-std p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8" style={{ borderColor: "#c5fe02", boxShadow: "4px 4px 0px #c5fe02" }}>
             <div className="space-y-3 max-w-xl">
               <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase text-hype">
                 <Radio className="w-4 h-4 animate-pulse" />
