@@ -30,6 +30,14 @@ export const metadata: Metadata = {
   title: "THE HYPE CO. // Indian 90s & 2000s Streetwear Archive",
   description: "Heavyweight oversized & regular streetwear inspired by DD National broadcast test patterns, cassette culture, STD booths, and Sharjah cricket glory.",
   keywords: ["thehypeco", "Indian streetwear", "oversized t-shirts", "DD National", "STD PCO", "90s Indian fashion", "vintage streetwear India"],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "THE HYPE CO. // 90s Indian Pop Culture Streetwear",
     description: "Heavyweight streetwear inspired by DD National, cassette culture, STD booths, and 90s nostalgia.",
