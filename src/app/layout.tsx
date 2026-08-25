@@ -27,7 +27,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "THE HYPE CO. // Indian 90s & 2000s Streetwear Archive",
+  title: "THE HYPE // CO.",
   description: "Heavyweight oversized & regular streetwear inspired by DD National broadcast test patterns, cassette culture, STD booths, and Sharjah cricket glory.",
   keywords: ["thehypeco", "Indian streetwear", "oversized t-shirts", "DD National", "STD PCO", "90s Indian fashion", "vintage streetwear India"],
   icons: {
