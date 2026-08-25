@@ -85,6 +85,7 @@ export function TrackingMedia({
 
     observer.observe(el);
     return () => observer.disconnect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [staticUrl, videoUrl, prefersReducedMotion]);
 
   // Desktop hover handlers
@@ -108,17 +109,17 @@ export function TrackingMedia({
       ref={containerRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden bg-paper/40 select-none ${aspectRatio} ${className}`}
+      className={`relative overflow-hidden bg-ink/10 select-none ${aspectRatio} ${className}`}
       data-testid="tracking-media-container"
     >
       {/* Glitch Overlay effect bar */}
       {isGlitching && !prefersReducedMotion && (
-        <div className="absolute inset-0 z-20 pointer-events-none bg-signal/20 mix-blend-color-dodge animate-tracking" />
+        <div className="absolute inset-0 z-20 pointer-events-none bg-flash/20 mix-blend-color-dodge animate-tracking" />
       )}
 
       {/* VHS Tracking scanline jitter effect during animation */}
       {isGlitching && !prefersReducedMotion && (
-        <div className="absolute inset-x-0 h-4 bg-paper/60 backdrop-blur-xs top-1/3 animate-pulse z-30 pointer-events-none" />
+        <div className="absolute inset-x-0 h-4 bg-white/60 backdrop-blur-sm top-1/3 animate-pulse z-30 pointer-events-none" />
       )}
 
       {/* Static Image (always rendered, hidden only if video active and not reduced motion) */}
@@ -149,7 +150,7 @@ export function TrackingMedia({
       )}
 
       {/* Subtle VHS corner watermark */}
-      <div className="absolute bottom-2 left-2 z-10 text-[9px] font-mono tracking-widest text-ink/70 bg-paper/85 px-1.5 py-0.5 rounded-xs border border-ink/30 uppercase">
+      <div className="absolute bottom-2 left-2 z-10 text-[9px] font-mono tracking-widest text-white/80 bg-ink/80 px-1.5 py-0.5 rounded-sm border border-white/20 uppercase">
         {showVideo ? "▶ PLAY // VHS" : "SP // 90MIN"}
       </div>
     </div>

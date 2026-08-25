@@ -6,7 +6,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { useCart } from "@/lib/cart-context";
 import { formatPaise } from "@/lib/currency";
-import { ShieldCheck, Truck, ArrowLeft, Lock, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, ArrowLeft, Lock, ArrowRight } from "lucide-react";
 
 declare global {
   interface Window {
@@ -69,7 +69,6 @@ export default function CheckoutPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [razorpayScriptLoaded, setRazorpayScriptLoaded] = useState(false);
 
-  // If cart is empty and page mounts
   useEffect(() => {
     if (items.length === 0 && !isLoading) {
       // Let user fill or navigate back
@@ -87,7 +86,6 @@ export default function CheckoutPage() {
     e.preventDefault();
     setErrorMessage(null);
 
-    // Validation
     if (!formData.fullName || !formData.email || !formData.phone || !formData.addressLine1 || !formData.pincode) {
       setErrorMessage("Please complete all required shipping fields.");
       return;
@@ -148,7 +146,7 @@ export default function CheckoutPage() {
           contact: formData.phone,
         },
         theme: {
-          color: "#E14522", // signal color
+          color: "#F0175C", // flash color
         },
         modal: {
           ondismiss: function () {
@@ -157,7 +155,6 @@ export default function CheckoutPage() {
         },
         handler: async function (response: any) {
           try {
-            // Verify payment
             const verifyRes = await fetch("/api/razorpay/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -184,7 +181,6 @@ export default function CheckoutPage() {
         },
       };
 
-      // Check if Razorpay script is available in browser
       if (typeof window !== "undefined" && window.Razorpay) {
         const rzp = new window.Razorpay(options);
         rzp.on("payment.failed", function (resp: any) {
@@ -219,12 +215,12 @@ export default function CheckoutPage() {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center font-mono space-y-4">
         <h2 className="font-display text-3xl uppercase text-ink">YOUR CART IS EMPTY</h2>
-        <p className="text-xs text-ink/70 font-body">
+        <p className="text-xs text-ink/60 font-body">
           Please add items to your cart before proceeding to checkout.
         </p>
         <Link
           href="/catalog"
-          className="inline-flex items-center gap-2 bg-signal text-paper px-6 py-3 font-mono font-bold text-xs uppercase border-2 border-ink"
+          className="inline-flex items-center gap-2 bg-flash text-white px-6 py-3 font-mono font-bold text-xs uppercase border-2 border-ink"
         >
           <span>VIEW CATALOGUE</span>
           <ArrowRight className="w-4 h-4" />
@@ -244,17 +240,17 @@ export default function CheckoutPage() {
         {/* Top Header */}
         <div className="flex items-center justify-between border-b-4 border-ink pb-4 mb-8">
           <div>
-            <div className="text-xs font-bold uppercase text-signal tracking-widest mb-1">
-              // EXPRESS CHECKOUT • GUEST & AUTH
+            <div className="text-xs font-bold uppercase text-flash tracking-widest mb-1">
+              // EXPRESS CHECKOUT • GUEST &amp; AUTH
             </div>
             <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink">
-              SHIPPING & PAYMENT
+              SHIPPING &amp; PAYMENT
             </h1>
           </div>
 
           <Link
             href="/cart"
-            className="inline-flex items-center gap-1 text-xs font-bold uppercase text-ink hover:text-signal transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-bold uppercase text-ink hover:text-flash transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>EDIT CART</span>
@@ -262,7 +258,7 @@ export default function CheckoutPage() {
         </div>
 
         {errorMessage && (
-          <div className="bg-signal text-paper p-3 text-xs font-bold border-2 border-ink mb-6">
+          <div className="bg-flash text-white p-3 text-xs font-bold border-2 border-ink mb-6">
             ⚠️ {errorMessage}
           </div>
         )}
@@ -270,20 +266,20 @@ export default function CheckoutPage() {
         {/* Minimal Single-Column Checkout Form */}
         <form onSubmit={handleCheckoutSubmit} className="space-y-8">
           {/* 1. Contact Info */}
-          <div className="bg-paper border-std p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-static pb-2">
+          <div className="bg-white border-std p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-ink/20 pb-2">
               <h2 className="text-sm font-bold uppercase text-ink flex items-center gap-2">
-                <span className="w-5 h-5 bg-ink text-paper flex items-center justify-center text-xs">
+                <span className="w-5 h-5 bg-ink text-white flex items-center justify-center text-xs">
                   1
                 </span>
                 CONTACT DETAILS
               </h2>
-              <span className="text-[11px] text-ink/60">GUEST CHECKOUT SUPPORTED</span>
+              <span className="text-[11px] text-ink/40">GUEST CHECKOUT SUPPORTED</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   FULL NAME *
                 </label>
                 <input
@@ -293,12 +289,12 @@ export default function CheckoutPage() {
                   placeholder="e.g. Aryan Sharma"
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs uppercase focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs uppercase focus:outline-hidden"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   WHATSAPP / PHONE NUMBER *
                 </label>
                 <input
@@ -308,12 +304,12 @@ export default function CheckoutPage() {
                   placeholder="e.g. 9876543210"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs uppercase focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs uppercase focus:outline-hidden"
                 />
               </div>
 
               <div className="sm:col-span-2 space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   EMAIL ADDRESS (FOR ORDER RECEIPT) *
                 </label>
                 <input
@@ -323,27 +319,27 @@ export default function CheckoutPage() {
                   placeholder="e.g. aryan@example.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs focus:outline-hidden"
                 />
               </div>
             </div>
           </div>
 
           {/* 2. Indian Shipping Address */}
-          <div className="bg-paper border-std p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-static pb-2">
+          <div className="bg-white border-std p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-ink/20 pb-2">
               <h2 className="text-sm font-bold uppercase text-ink flex items-center gap-2">
-                <span className="w-5 h-5 bg-ink text-paper flex items-center justify-center text-xs">
+                <span className="w-5 h-5 bg-ink text-white flex items-center justify-center text-xs">
                   2
                 </span>
                 DELIVERY ADDRESS (PAN-INDIA)
               </h2>
-              <span className="text-[11px] text-crt font-bold">EXPRESS COURIER</span>
+              <span className="text-[11px] text-flash font-bold">EXPRESS COURIER</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="sm:col-span-2 space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   HOUSE / FLAT / STREET ADDRESS *
                 </label>
                 <input
@@ -353,12 +349,12 @@ export default function CheckoutPage() {
                   placeholder="e.g. Flat 402, Shanti Niketan Apts, MG Road"
                   value={formData.addressLine1}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs uppercase focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs uppercase focus:outline-hidden"
                 />
               </div>
 
               <div className="sm:col-span-2 space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   LANDMARK / AREA (OPTIONAL)
                 </label>
                 <input
@@ -367,12 +363,12 @@ export default function CheckoutPage() {
                   placeholder="e.g. Near STD Booth / Metro Pillar 140"
                   value={formData.addressLine2}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs uppercase focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs uppercase focus:outline-hidden"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   CITY *
                 </label>
                 <input
@@ -382,19 +378,19 @@ export default function CheckoutPage() {
                   placeholder="e.g. Mumbai / Delhi / Bengaluru"
                   value={formData.city}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs uppercase focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs uppercase focus:outline-hidden"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   STATE *
                 </label>
                 <select
                   name="state"
                   value={formData.state}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs uppercase focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs uppercase focus:outline-hidden"
                 >
                   {INDIAN_STATES.map((st) => (
                     <option key={st} value={st}>
@@ -405,7 +401,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="space-y-1">
-                <label className="block text-[10px] font-bold text-ink/70 uppercase">
+                <label className="block text-[10px] font-bold text-ink/60 uppercase">
                   PINCODE (6-DIGIT) *
                 </label>
                 <input
@@ -417,39 +413,39 @@ export default function CheckoutPage() {
                   placeholder="e.g. 110001"
                   value={formData.pincode}
                   onChange={handleChange}
-                  className="w-full bg-paper border border-ink p-2 text-xs focus:outline-hidden"
+                  className="w-full bg-white border border-ink p-2 text-xs focus:outline-hidden"
                 />
               </div>
             </div>
           </div>
 
           {/* 3. Order Summary & Razorpay Trigger */}
-          <div className="bg-paper border-std p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-static pb-2">
+          <div className="bg-white border-std p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-ink/20 pb-2">
               <h2 className="text-sm font-bold uppercase text-ink flex items-center gap-2">
-                <span className="w-5 h-5 bg-ink text-paper flex items-center justify-center text-xs">
+                <span className="w-5 h-5 bg-ink text-white flex items-center justify-center text-xs">
                   3
                 </span>
                 PAYMENT SUMMARY
               </h2>
-              <span className="text-[11px] text-ink/60">{items.length} ITEMS</span>
+              <span className="text-[11px] text-ink/40">{items.length} ITEMS</span>
             </div>
 
             <div className="space-y-2 text-xs">
               <div className="flex justify-between">
-                <span className="text-ink/70">ITEMS SUBTOTAL</span>
+                <span className="text-ink/60">ITEMS SUBTOTAL</span>
                 <span className="font-bold">{formatPaise(subtotalPaise)}</span>
               </div>
 
               {discountPaise > 0 && (
-                <div className="flex justify-between text-signal font-bold">
+                <div className="flex justify-between text-flash font-bold">
                   <span>PROMO DISCOUNT ({promoCode})</span>
                   <span>-{formatPaise(discountPaise)}</span>
                 </div>
               )}
 
               <div className="flex justify-between">
-                <span className="text-ink/70">SHIPPING</span>
+                <span className="text-ink/60">SHIPPING</span>
                 <span className="font-bold">
                   {shippingPaise === 0 ? "FREE" : formatPaise(shippingPaise)}
                 </span>
@@ -457,15 +453,15 @@ export default function CheckoutPage() {
 
               <div className="flex justify-between text-base font-bold border-t-2 border-ink pt-3 text-ink">
                 <span>TOTAL AMOUNT TO PAY</span>
-                <span className="text-signal">{formatPaise(totalPaise)}</span>
+                <span className="text-flash">{formatPaise(totalPaise)}</span>
               </div>
             </div>
 
-            {/* Pay with Razorpay CTA */}
+            {/* Pay with Razorpay CTA — only flash button on page */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full mt-4 flex items-center justify-center gap-2 bg-signal hover:bg-signal/90 text-paper py-4 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink shadow-lg transition-all active:translate-y-0.5 disabled:opacity-50"
+              className="w-full mt-4 flex items-center justify-center gap-2 bg-flash hover:bg-flash/90 text-white py-4 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink shadow-lg transition-all active:translate-y-0.5 disabled:opacity-50"
             >
               {isLoading ? (
                 <span>INITIALIZING SECURE RAZORPAY GATEWAY...</span>
@@ -477,9 +473,9 @@ export default function CheckoutPage() {
               )}
             </button>
 
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 text-[10px] text-ink/70 text-center">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 text-[10px] text-ink/40 text-center">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-crt" />
+                <ShieldCheck className="w-3.5 h-3.5" />
                 PCI-DSS Encrypted (Hosted Razorpay Modal)
               </span>
               <span>•</span>

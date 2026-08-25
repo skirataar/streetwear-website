@@ -37,13 +37,13 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
   const hasActiveFilters = currentFit !== "all" || currentSize !== "all" || currentEra !== "all";
 
   return (
-    <div className="w-full bg-paper border-std p-4 mb-8 space-y-4 font-mono">
+    <div className="w-full bg-white border-std p-4 mb-8 space-y-4 font-mono">
       {/* Top Filter Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-static pb-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink/20 pb-3">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink">
-          <SlidersHorizontal className="w-4 h-4 text-signal" />
+          <SlidersHorizontal className="w-4 h-4 text-flash" />
           <span>FILTER ARCHIVE MATRIX</span>
-          <span className="bg-ink text-paper px-2 py-0.5 text-[10px] rounded-xs font-bold">
+          <span className="bg-ink text-white px-2 py-0.5 text-[10px] rounded-sm font-bold">
             {totalResults} {totalResults === 1 ? "PIECE" : "PIECES"}
           </span>
         </div>
@@ -51,7 +51,7 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
         {hasActiveFilters && (
           <button
             onClick={resetFilters}
-            className="inline-flex items-center gap-1 text-[11px] text-signal font-bold uppercase hover:underline"
+            className="inline-flex items-center gap-1 text-[11px] text-flash font-bold uppercase hover:underline"
           >
             <RotateCcw className="w-3 h-3" />
             RESET FILTERS
@@ -63,7 +63,7 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
         {/* Fit Filter */}
         <div className="space-y-1.5">
-          <label className="block text-[10px] font-bold text-ink/70 uppercase tracking-wider">
+          <label className="block text-[10px] font-bold text-ink/60 uppercase tracking-wider">
             FIT SILHOUETTE
           </label>
           <div className="grid grid-cols-3 gap-1">
@@ -73,8 +73,8 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
                 onClick={() => updateParam("fit", fit)}
                 className={`py-1.5 px-2 text-center text-[11px] font-bold uppercase border border-ink transition-all ${
                   currentFit === fit
-                    ? "bg-ink text-paper"
-                    : "bg-paper text-ink hover:bg-static/20"
+                    ? "bg-ink text-white"
+                    : "bg-white text-ink hover:bg-ink/10"
                 }`}
               >
                 {fit}
@@ -85,7 +85,7 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
 
         {/* Size Filter */}
         <div className="space-y-1.5">
-          <label className="block text-[10px] font-bold text-ink/70 uppercase tracking-wider">
+          <label className="block text-[10px] font-bold text-ink/60 uppercase tracking-wider">
             SIZE (IN STOCK)
           </label>
           <div className="flex flex-wrap gap-1">
@@ -95,8 +95,8 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
                 onClick={() => updateParam("size", sz === "all" ? "all" : sz)}
                 className={`w-9 py-1.5 text-center text-[11px] font-bold uppercase border border-ink transition-all ${
                   currentSize.toUpperCase() === sz.toUpperCase()
-                    ? "bg-signal text-paper"
-                    : "bg-paper text-ink hover:bg-static/20"
+                    ? "bg-flash text-white"
+                    : "bg-white text-ink hover:bg-ink/10"
                 }`}
               >
                 {sz}
@@ -107,13 +107,13 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
 
         {/* Era / Collection Filter */}
         <div className="space-y-1.5">
-          <label className="block text-[10px] font-bold text-ink/70 uppercase tracking-wider">
+          <label className="block text-[10px] font-bold text-ink/60 uppercase tracking-wider">
             ERA / BROADCAST DROP
           </label>
           <select
             value={currentEra}
             onChange={(e) => updateParam("era", e.target.value)}
-            className="w-full bg-paper border border-ink py-1.5 px-2 text-xs font-bold text-ink rounded-none focus:ring-0 focus:outline-hidden"
+            className="w-full bg-white border border-ink py-1.5 px-2 text-xs font-bold text-ink rounded-none focus:ring-0 focus:outline-hidden"
           >
             <option value="all">ALL ERAS // COMPLETE ARCHIVE</option>
             {collections.map((col) => (
@@ -126,13 +126,13 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
 
         {/* Sort */}
         <div className="space-y-1.5">
-          <label className="block text-[10px] font-bold text-ink/70 uppercase tracking-wider">
+          <label className="block text-[10px] font-bold text-ink/60 uppercase tracking-wider">
             PRICE / SORT
           </label>
           <select
             value={currentSort}
             onChange={(e) => updateParam("sort", e.target.value)}
-            className="w-full bg-paper border border-ink py-1.5 px-2 text-xs font-bold text-ink rounded-none focus:ring-0 focus:outline-hidden"
+            className="w-full bg-white border border-ink py-1.5 px-2 text-xs font-bold text-ink rounded-none focus:ring-0 focus:outline-hidden"
           >
             <option value="latest">LATEST DROPS</option>
             <option value="price-asc">PRICE: LOW TO HIGH</option>

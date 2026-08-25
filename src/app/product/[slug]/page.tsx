@@ -6,7 +6,7 @@ import { VariantSelector } from "@/components/product/VariantSelector";
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ShieldCheck, Truck, RotateCcw, Share2 } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Truck, RotateCcw } from "lucide-react";
 
 export const revalidate = 60; // ISR revalidate every 60s
 
@@ -36,7 +36,7 @@ export async function generateMetadata({
       description: product.description,
       images: [
         {
-          url: staticImage, // Static shot only as required
+          url: staticImage, // Static shot only — never the video
           width: 800,
           height: 1000,
           alt: product.name,
@@ -68,16 +68,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="mb-6 font-mono text-xs text-ink/70">
+      <nav aria-label="Breadcrumb" className="mb-6 font-mono text-xs text-ink/50">
         <ol className="flex items-center gap-2 flex-wrap">
           <li>
-            <Link href="/" className="hover:text-signal transition-colors">
+            <Link href="/" className="hover:text-flash transition-colors">
               HOME
             </Link>
           </li>
           <li>/</li>
           <li>
-            <Link href="/catalog" className="hover:text-signal transition-colors">
+            <Link href="/catalog" className="hover:text-flash transition-colors">
               CATALOGUE
             </Link>
           </li>
@@ -87,7 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <li>
                 <Link
                   href={`/catalog/${product.collectionSlug}`}
-                  className="hover:text-signal transition-colors uppercase"
+                  className="hover:text-flash transition-colors uppercase"
                 >
                   {product.era}
                 </Link>
@@ -115,13 +115,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         {/* Right Column: Title, Description, Variants & Add to Cart */}
         <div className="lg:col-span-5 space-y-6">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-signal tracking-widest mb-1.5">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1.5">
               <span>{product.era} // DROP #04</span>
             </div>
             <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink leading-tight">
               {product.name}
             </h1>
-            <p className="font-body text-sm text-ink/80 mt-3 leading-relaxed">
+            <p className="font-body text-sm text-ink/70 mt-3 leading-relaxed">
               {product.description}
             </p>
           </div>
@@ -130,21 +130,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <VariantSelector product={product} />
 
           {/* Value Highlights */}
-          <div className="grid grid-cols-2 gap-3 pt-4 border-t-2 border-static text-[11px] font-mono text-ink/80">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t-2 border-ink/20 text-[11px] font-mono text-ink/60">
             <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-signal shrink-0" />
+              <Truck className="w-4 h-4 text-flash shrink-0" />
               <span>FREE DELIVERY OVER ₹1,999</span>
             </div>
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-crt shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-ink/40 shrink-0" />
               <span>100% SECURE RAZORPAY CHECKOUT</span>
             </div>
             <div className="flex items-center gap-2">
-              <RotateCcw className="w-4 h-4 text-tape shrink-0" />
+              <RotateCcw className="w-4 h-4 text-ink/40 shrink-0" />
               <span>7-DAY EASY SIZE EXCHANGE</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-signal inline-block shrink-0" />
+              <span className="w-3 h-3 rounded-full bg-hype inline-block shrink-0 border border-ink/20" />
               <span>MADE IN TIRUPUR, INDIA</span>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <section className="border-t-4 border-ink pt-12 mt-10">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <div className="text-xs font-mono font-bold uppercase text-signal">
+              <div className="text-xs font-mono font-bold uppercase text-flash">
                 // COMPATIBLE FREQUENCIES
               </div>
               <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tight text-ink">
@@ -165,7 +165,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
             <Link
               href="/catalog"
-              className="text-xs font-mono font-bold uppercase text-ink hover:text-signal hover:underline"
+              className="text-xs font-mono font-bold uppercase text-ink hover:text-flash hover:underline"
             >
               VIEW ALL
             </Link>

@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #E9DFC7;
-  --color-ink: #221D16;
-  --color-signal: #E14522;
-  --color-tape: #D3A029;
-  --color-crt: #2E6E68;
-  --color-static: #B8AE94;
+  /* thehypeco.in 4-token palette */
+  --color-hype: #46E621;
+  --color-ink: #141414;
+  --color-flash: #F0175C;
 
   --font-display: var(--font-anton), Impact, sans-serif;
   --font-body: var(--font-karla), sans-serif;
@@ -14,12 +12,9 @@
 }
 
 :root {
-  --color-paper: #E9DFC7;
-  --color-ink: #221D16;
-  --color-signal: #E14522;
-  --color-tape: #D3A029;
-  --color-crt: #2E6E68;
-  --color-static: #B8AE94;
+  --color-hype: #46E621;
+  --color-ink: #141414;
+  --color-flash: #F0175C;
 }
 
 * {
@@ -27,8 +22,8 @@
 }
 
 body {
-  background-color: #E9DFC7;
-  color: #221D16;
+  background-color: #46E621;
+  color: #141414;
   font-family: var(--font-karla), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,24 +48,24 @@ body {
 
 /* Subtle CRT curvature effect on hero card */
 .crt-bezel {
-  box-shadow: inset 0 0 24px rgba(34, 29, 22, 0.35), 0 10px 30px -10px rgba(34, 29, 22, 0.4);
+  box-shadow: inset 0 0 24px rgba(20, 20, 20, 0.35), 0 10px 30px -10px rgba(20, 20, 20, 0.4);
 }
 
 /* Halftone / Newsprint static texture pattern */
 .bg-newsprint {
-  background-image: radial-gradient(#221D16 0.75px, transparent 0.75px);
+  background-image: radial-gradient(#141414 0.75px, transparent 0.75px);
   background-size: 8px 8px;
 }
 
-/* Indian STD Booth Signboard border style */
+/* Indian STD Booth Signboard border style (updated to new ink) */
 .border-std {
-  border: 3px solid #221D16;
-  box-shadow: 4px 4px 0px #221D16;
+  border: 3px solid #141414;
+  box-shadow: 4px 4px 0px #141414;
 }
 
 .border-std-sm {
-  border: 2px solid #221D16;
-  box-shadow: 2px 2px 0px #221D16;
+  border: 2px solid #141414;
+  box-shadow: 2px 2px 0px #141414;
 }
 
 .border-std-hover {
@@ -79,20 +74,20 @@ body {
 
 .border-std-hover:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #221D16;
+  box-shadow: 6px 6px 0px #141414;
 }
 
 .border-std-hover:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #221D16;
+  box-shadow: 1px 1px 0px #141414;
 }
 
-/* Focus styles for keyboard accessibility */
+/* Focus styles for keyboard accessibility — uses flash for maximum contrast */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #E14522 !important;
+  outline: 3px solid #F0175C !important;
   outline-offset: 2px !important;
 }
 

@@ -9,12 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#E9DFC7",
-        ink: "#221D16",
-        signal: "#E14522",
-        tape: "#D3A029",
-        crt: "#2E6E68",
-        static: "#B8AE94",
+        // thehypeco.in palette — 4 tokens only
+        hype: "#46E621",   // primary bg (full-bleed green sections)
+        ink: "#141414",    // alternate section bg + borders + text on hype
+        flash: "#F0175C",  // CTA buttons only (Add to Cart, Shop the Drop)
+        // white and neutral-400 from Tailwind core cover the rest
       },
       fontFamily: {
         display: ["var(--font-anton)", "sans-serif"],
@@ -25,7 +24,7 @@ const config: Config = {
         tracking: "tracking 220ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
         marquee: "marquee 25s linear infinite",
         "marquee-fast": "marquee 15s linear infinite",
-        "scanline": "scanline 8s linear infinite",
+        scanline: "scanline 8s linear infinite",
       },
       keyframes: {
         tracking: {

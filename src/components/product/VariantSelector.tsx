@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import { ProductData, ProductVariantData } from "@/lib/mock-data";
 import { useCart } from "@/lib/cart-context";
 import { formatPaise } from "@/lib/currency";
-import { ShoppingBag, Check, Info, Shield, Truck } from "lucide-react";
+import { ShoppingBag, Check, Info } from "lucide-react";
 
 interface VariantSelectorProps {
   product: ProductData;
 }
 
 export function VariantSelector({ product }: VariantSelectorProps) {
-  const { addItem, setIsCartOpen } = useCart();
+  const { addItem } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>(
     product.variants.find((v) => v.stock > 0)?.size || "M"
   );
@@ -51,7 +51,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
     <div className="space-y-6 font-mono">
       {/* Price Display */}
       <div className="border-b-2 border-ink pb-4">
-        <div className="text-xs text-ink/70 font-bold uppercase tracking-wider">
+        <div className="text-xs text-ink/60 font-bold uppercase tracking-wider">
           MRP (INCL. OF ALL TAXES)
         </div>
         <div className="text-3xl sm:text-4xl font-bold font-mono text-ink tracking-tight">
@@ -66,7 +66,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
           <button
             type="button"
             onClick={() => setShowSizeGuide(!showSizeGuide)}
-            className="text-signal hover:underline inline-flex items-center gap-1"
+            className="text-flash hover:underline inline-flex items-center gap-1"
           >
             <Info className="w-3.5 h-3.5" />
             {showSizeGuide ? "HIDE SIZE CHART" : "SIZE GUIDE (INCHES)"}
@@ -90,15 +90,15 @@ export function VariantSelector({ product }: VariantSelectorProps) {
                 }}
                 className={`py-3 px-2 text-center font-mono font-bold text-sm border-2 transition-all relative ${
                   outOfStock
-                    ? "bg-static/20 border-static/40 text-ink/40 cursor-not-allowed line-through"
+                    ? "bg-ink/10 border-ink/20 text-ink/30 cursor-not-allowed line-through"
                     : isSelected
-                    ? "bg-signal text-paper border-ink shadow-md"
-                    : "bg-paper text-ink border-ink hover:bg-tape/20"
+                    ? "bg-ink text-white border-ink shadow-md"
+                    : "bg-white text-ink border-ink hover:bg-hype/20"
                 }`}
               >
                 {v.size}
                 {v.stock > 0 && v.stock <= 5 && (
-                  <span className="absolute -top-2 -right-1 bg-signal text-paper text-[8px] px-1 py-0.2 rounded-xs font-bold border border-ink">
+                  <span className="absolute -top-2 -right-1 bg-flash text-white text-[8px] px-1 py-0.5 rounded-sm font-bold border border-ink">
                     {v.stock}L
                   </span>
                 )}
@@ -110,66 +110,41 @@ export function VariantSelector({ product }: VariantSelectorProps) {
         {/* Stock status indicator */}
         <div className="text-xs font-bold pt-1">
           {isOutOfStock ? (
-            <span className="text-signal uppercase">● SOLD OUT IN THIS SIZE</span>
+            <span className="text-flash uppercase">● SOLD OUT IN THIS SIZE</span>
           ) : activeVariant.stock <= 5 ? (
-            <span className="text-signal uppercase animate-pulse">
+            <span className="text-flash uppercase animate-pulse">
               ● HURRY: ONLY {activeVariant.stock} UNITS LEFT IN BATCH
             </span>
           ) : (
-            <span className="text-crt uppercase">● IN STOCK // READY TO DISPATCH</span>
+            <span className="text-hype uppercase" style={{ textShadow: "0 0 1px #141414" }}>● IN STOCK // READY TO DISPATCH</span>
           )}
         </div>
       </div>
 
       {/* Size Guide Table (collapsible) */}
       {showSizeGuide && (
-        <div className="bg-paper border-2 border-ink p-4 text-xs font-mono space-y-2">
-          <div className="font-bold text-ink uppercase border-b border-static pb-1">
+        <div className="bg-white border-2 border-ink p-4 text-xs font-mono space-y-2">
+          <div className="font-bold text-ink uppercase border-b border-ink/20 pb-1">
             {product.fit} FIT MEASUREMENT CHART (INCHES)
           </div>
           <table className="w-full text-center border-collapse">
             <thead>
-              <tr className="bg-ink text-paper text-[10px]">
+              <tr className="bg-ink text-white text-[10px]">
                 <th className="p-1">SIZE</th>
                 <th className="p-1">CHEST</th>
                 <th className="p-1">LENGTH</th>
                 <th className="p-1">SHOULDER</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-static text-[11px]">
-              <tr>
-                <td className="p-1 font-bold">S</td>
-                <td>42"</td>
-                <td>28"</td>
-                <td>20"</td>
-              </tr>
-              <tr>
-                <td className="p-1 font-bold">M</td>
-                <td>44"</td>
-                <td>29"</td>
-                <td>21"</td>
-              </tr>
-              <tr>
-                <td className="p-1 font-bold">L</td>
-                <td>46"</td>
-                <td>30"</td>
-                <td>22"</td>
-              </tr>
-              <tr>
-                <td className="p-1 font-bold">XL</td>
-                <td>48"</td>
-                <td>31"</td>
-                <td>23"</td>
-              </tr>
-              <tr>
-                <td className="p-1 font-bold">XXL</td>
-                <td>50"</td>
-                <td>32"</td>
-                <td>24"</td>
-              </tr>
+            <tbody className="divide-y divide-ink/10 text-[11px]">
+              <tr><td className="p-1 font-bold">S</td><td>42&quot;</td><td>28&quot;</td><td>20&quot;</td></tr>
+              <tr><td className="p-1 font-bold">M</td><td>44&quot;</td><td>29&quot;</td><td>21&quot;</td></tr>
+              <tr><td className="p-1 font-bold">L</td><td>46&quot;</td><td>30&quot;</td><td>22&quot;</td></tr>
+              <tr><td className="p-1 font-bold">XL</td><td>48&quot;</td><td>31&quot;</td><td>23&quot;</td></tr>
+              <tr><td className="p-1 font-bold">XXL</td><td>50&quot;</td><td>32&quot;</td><td>24&quot;</td></tr>
             </tbody>
           </table>
-          <p className="text-[10px] text-ink/70 italic">
+          <p className="text-[10px] text-ink/50 italic">
             *Oversized fit is cut 2 inches wider than standard Indian streetwear specs. Order your regular size for intended drape.
           </p>
         </div>
@@ -178,12 +153,12 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       {/* Quantity Picker & Add to Cart Button */}
       <div className="space-y-3 pt-2">
         <div className="flex items-center gap-3">
-          <div className="flex items-center border-2 border-ink bg-paper">
+          <div className="flex items-center border-2 border-ink bg-white">
             <button
               type="button"
               disabled={quantity <= 1 || isOutOfStock}
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="px-3 py-3 text-sm font-bold hover:bg-static/20 disabled:opacity-40"
+              className="px-3 py-3 text-sm font-bold hover:bg-ink/5 disabled:opacity-40"
               aria-label="Decrease quantity"
             >
               -
@@ -197,23 +172,24 @@ export function VariantSelector({ product }: VariantSelectorProps) {
               onClick={() =>
                 setQuantity(Math.min(activeVariant?.stock || 1, quantity + 1))
               }
-              className="px-3 py-3 text-sm font-bold hover:bg-static/20 disabled:opacity-40"
+              className="px-3 py-3 text-sm font-bold hover:bg-ink/5 disabled:opacity-40"
               aria-label="Increase quantity"
             >
               +
             </button>
           </div>
 
+          {/* Add to Cart — flash is the ONE CTA color per brief */}
           <button
             type="button"
             disabled={isOutOfStock}
             onClick={handleAddToCart}
             className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink transition-all ${
               isOutOfStock
-                ? "bg-static/40 text-ink/40 border-static cursor-not-allowed"
+                ? "bg-ink/10 text-ink/30 border-ink/20 cursor-not-allowed"
                 : addedAnimation
-                ? "bg-crt text-paper"
-                : "bg-signal hover:bg-signal/90 text-paper border-std-hover shadow-md active:translate-y-0.5"
+                ? "bg-hype text-ink"
+                : "bg-flash hover:bg-flash/90 text-white border-std-hover shadow-md active:translate-y-0.5"
             }`}
           >
             {addedAnimation ? (
@@ -234,14 +210,14 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       </div>
 
       {/* Streetwear Garment Specs */}
-      <div className="bg-paper border-2 border-ink p-4 space-y-3 text-xs">
-        <div className="font-bold text-ink uppercase tracking-wider border-b border-static pb-1">
+      <div className="bg-white border-2 border-ink p-4 space-y-3 text-xs">
+        <div className="font-bold text-ink uppercase tracking-wider border-b border-ink/20 pb-1">
           // ARCHIVE GARMENT SPECIFICATIONS
         </div>
-        <ul className="space-y-1.5 text-ink/80 text-[11px]">
+        <ul className="space-y-1.5 text-ink/70 text-[11px]">
           <li>• <strong>FABRIC:</strong> 240 GSM 100% Combed Compact Cotton</li>
-          <li>• <strong>PRINT:</strong> High-Density Plastisol & Vintage Screenprint</li>
-          <li>• <strong>WASH:</strong> Pre-shrunk silicone & enzyme bio-washed</li>
+          <li>• <strong>PRINT:</strong> High-Density Plastisol &amp; Vintage Screenprint</li>
+          <li>• <strong>WASH:</strong> Pre-shrunk silicone &amp; enzyme bio-washed</li>
           <li>• <strong>ORIGIN:</strong> Knitted, dyed, and crafted in Tirupur, India</li>
         </ul>
       </div>

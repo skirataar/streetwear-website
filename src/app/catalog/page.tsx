@@ -43,15 +43,15 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
-      {/* Page Title Header */}
+      {/* Page Title Header — sits on hype green body */}
       <div className="border-b-4 border-ink pb-6 mb-8">
-        <div className="text-xs font-mono font-bold uppercase text-signal tracking-widest mb-1">
+        <div className="text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1">
           // ARCHIVE CATALOGUE • INDEX
         </div>
         <h1 className="font-display text-4xl sm:text-7xl uppercase tracking-tight text-ink">
-          ALL DROPS & CASSETTE CUTS
+          ALL DROPS &amp; CASSETTE CUTS
         </h1>
-        <p className="font-body text-sm sm:text-base text-ink/80 max-w-2xl mt-2 leading-relaxed">
+        <p className="font-body text-sm sm:text-base text-ink/70 max-w-2xl mt-2 leading-relaxed">
           Screenprinted on 240+ GSM heavyweight cotton. Filter by silhouette, size, or historical pop-culture era.
         </p>
       </div>
@@ -61,9 +61,9 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
 
       {/* Product Grid */}
       {sortedProducts.length === 0 ? (
-        <div className="text-center py-20 bg-paper border-2 border-ink font-mono space-y-3">
-          <div className="text-signal text-xl font-bold">NO MATCHING DROPS FOUND</div>
-          <p className="text-xs text-ink/70 font-body">
+        <div className="text-center py-20 bg-white border-2 border-ink font-mono space-y-3">
+          <div className="text-flash text-xl font-bold">NO MATCHING DROPS FOUND</div>
+          <p className="text-xs text-ink/60 font-body">
             No items matched your current filter criteria. Try resetting filters to view all archive pieces.
           </p>
         </div>

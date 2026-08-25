@@ -46,9 +46,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${karla.variable} ${spaceMono.variable} antialiased selection:bg-signal selection:text-paper`}
+      className={`${anton.variable} ${karla.variable} ${spaceMono.variable} antialiased selection:bg-flash selection:text-white`}
     >
-      <body className="min-h-screen flex flex-col bg-paper text-ink">
+      <body className="min-h-screen flex flex-col bg-hype text-ink">
         <CartProvider>
           <Header />
           <CartDrawer />

@@ -25,9 +25,9 @@ export function ProductGallery({ images, name, fit }: ProductGalleryProps) {
   return (
     <div className="flex flex-col space-y-4">
       {/* Main Image with Tracking Glitch */}
-      <div className="relative border-std overflow-hidden bg-paper">
+      <div className="relative border-std overflow-hidden bg-ink/5">
         {/* Fit Ribbon */}
-        <div className="absolute top-3 left-3 z-30 font-mono text-xs font-bold px-2.5 py-1 uppercase bg-signal text-paper border border-ink shadow-sm">
+        <div className="absolute top-3 left-3 z-30 font-mono text-xs font-bold px-2.5 py-1 uppercase bg-flash text-white border border-ink shadow-sm">
           {fit} FIT
         </div>
 
@@ -51,8 +51,8 @@ export function ProductGallery({ images, name, fit }: ProductGalleryProps) {
               onClick={() => setSelectedIndex(idx)}
               className={`relative aspect-square border-2 overflow-hidden transition-all ${
                 selectedIndex === idx
-                  ? "border-signal shadow-md scale-95 ring-2 ring-signal/50"
-                  : "border-ink hover:border-signal/70 opacity-80 hover:opacity-100"
+                  ? "border-flash shadow-md scale-95 ring-2 ring-flash/50"
+                  : "border-ink hover:border-flash/70 opacity-80 hover:opacity-100"
               }`}
               aria-label={`View image ${idx + 1} for ${name}`}
             >
@@ -64,7 +64,7 @@ export function ProductGallery({ images, name, fit }: ProductGalleryProps) {
                 className="object-cover"
               />
               {img.videoUrl && (
-                <span className="absolute bottom-1 right-1 bg-ink/90 text-paper text-[8px] font-mono px-1 rounded-xs">
+                <span className="absolute bottom-1 right-1 bg-ink/90 text-white text-[8px] font-mono px-1 rounded-sm">
                   ▶ VIDEO
                 </span>
               )}
