@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
 import { ProductCard } from "@/components/catalog/ProductCard";
-import { getCollections, getProducts } from "@/lib/mock-data";
+import { getCollections, getProducts } from "@/lib/db";
 import { ArrowRight, Radio, Flame } from "lucide-react";
 
 export const revalidate = 60; // ISR revalidate every 60s

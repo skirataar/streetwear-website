@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { razorpay } from "@/lib/razorpay";
-import { getProductBySlug } from "@/lib/mock-data";
+import { getProductBySlug } from "@/lib/db";
 
 interface CreateOrderItem {
   variantId: string;

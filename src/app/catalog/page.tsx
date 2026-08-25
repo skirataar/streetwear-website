@@ -1,5 +1,5 @@
 import React from "react";
-import { getCollections, getProducts } from "@/lib/mock-data";
+import { getCollections, getProducts } from "@/lib/db";
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { FilterBar } from "@/components/catalog/FilterBar";
 import { Metadata } from "next";

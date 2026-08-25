@@ -152,7 +152,12 @@ export async function getWooCommerceProducts(options?: {
       params.featured = "true";
     }
 
-    const wcProducts = await fetchWooCommerce("products", params);
+    let wcProducts = await fetchWooCommerce("products", params);
+    if (!Array.isArray(wcProducts) || (wcProducts.length === 0 && options?.featuredOnly)) {
+      // If no featured products found, fetch all published WooCommerce products
+      wcProducts = await fetchWooCommerce("products", { per_page: "50" });
+    }
+
     if (!Array.isArray(wcProducts)) return [];
 
     let mapped = wcProducts.map(mapWooProductToProductData);

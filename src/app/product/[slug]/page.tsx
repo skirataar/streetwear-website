@@ -1,6 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { getProductBySlug, getProducts } from "@/lib/mock-data";
+import { getProductBySlug, getProducts } from "@/lib/db";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { VariantSelector } from "@/components/product/VariantSelector";
 import { ProductCard } from "@/components/catalog/ProductCard";

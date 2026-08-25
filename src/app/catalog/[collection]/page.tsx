@@ -1,6 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { getCollections, getProducts } from "@/lib/mock-data";
+import { getCollections, getProducts } from "@/lib/db";
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { Metadata } from "next";
 import Link from "next/link";
