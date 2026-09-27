@@ -467,37 +467,37 @@ export default function CheckoutPage() {
               <span className="text-[11px] text-ink/40">{items.length} ITEMS</span>
             </div>
 
-            <div className="space-y-2 text-xs">
+            <div className="space-y-2 text-xs text-ink">
               <div className="flex justify-between">
-                <span className="text-ink/60">ITEMS SUBTOTAL</span>
-                <span className="font-bold">{formatPaise(subtotalPaise)}</span>
+                <span className="text-ink/80 font-medium">ITEMS SUBTOTAL</span>
+                <span className="font-bold text-ink">{formatPaise(subtotalPaise)}</span>
               </div>
 
               {discountPaise > 0 && (
-                <div className="flex justify-between text-flash font-bold">
+                <div className="flex justify-between text-ink font-bold">
                   <span>PROMO DISCOUNT ({promoCode})</span>
                   <span>-{formatPaise(discountPaise)}</span>
                 </div>
               )}
 
               <div className="flex justify-between">
-                <span className="text-ink/60">SHIPPING</span>
-                <span className="font-bold">
+                <span className="text-ink/80 font-medium">SHIPPING</span>
+                <span className="font-bold text-ink">
                   {shippingPaise === 0 ? "FREE" : formatPaise(shippingPaise)}
                 </span>
               </div>
 
               <div className="flex justify-between text-base font-bold border-t-2 border-ink pt-3 text-ink">
                 <span>TOTAL AMOUNT TO PAY</span>
-                <span className="text-flash">{formatPaise(totalPaise)}</span>
+                <span className="text-ink font-bold">{formatPaise(totalPaise)}</span>
               </div>
             </div>
 
-            {/* Pay with Razorpay CTA — only flash button on page */}
+            {/* Pay with Razorpay CTA */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full mt-4 flex items-center justify-center gap-2 bg-flash hover:bg-flash/90 text-white py-4 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink shadow-lg transition-all active:translate-y-0.5 disabled:opacity-50"
+              className="w-full mt-4 flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white py-4 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink shadow-lg transition-all active:translate-y-0.5 disabled:opacity-50"
             >
               {isLoading ? (
                 <span>INITIALIZING SECURE RAZORPAY GATEWAY...</span>
@@ -509,9 +509,9 @@ export default function CheckoutPage() {
               )}
             </button>
 
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 text-[10px] text-ink/40 text-center">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 text-[10px] text-ink/70 font-medium text-center">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5" />
+                <ShieldCheck className="w-3.5 h-3.5 text-ink/70" />
                 PCI-DSS Encrypted (Hosted Razorpay Modal)
               </span>
               <span>•</span>

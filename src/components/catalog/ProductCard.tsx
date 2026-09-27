@@ -34,7 +34,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         >
           {product.fit}
         </span>
-        <span className="text-neutral-400 tracking-widest uppercase truncate max-w-[150px]">
+        <span className="text-ink/70 tracking-widest uppercase font-bold truncate max-w-[150px]">
           {product.era}
         </span>
       </div>
@@ -59,39 +59,41 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       <div className="p-4 flex flex-col justify-between flex-1 bg-white">
         <div>
           {/* Name */}
-          <h3 className="font-display text-xl sm:text-2xl text-ink uppercase tracking-tight leading-snug group-hover:text-flash transition-colors line-clamp-2">
-            <Link href={`/product/${product.slug}`} className="focus:outline-hidden">
+          <h3 className="font-display text-xl sm:text-2xl text-ink uppercase tracking-tight leading-snug line-clamp-2">
+            <Link href={`/product/${product.slug}`} className="text-ink hover:text-flash transition-colors focus:outline-hidden">
               {product.name}
             </Link>
           </h3>
 
           {/* Description snippet */}
-          <p className="mt-1.5 text-xs text-ink/75 font-body line-clamp-2 leading-relaxed">
+          <p className="mt-1.5 text-xs text-ink/80 font-body line-clamp-2 leading-relaxed">
             {product.description}
           </p>
         </div>
 
         {/* Price & Action Footer */}
-        <div className="mt-4 pt-3 border-t border-ink/20 flex items-center justify-between">
+        <div className="mt-4 pt-3 border-t border-ink/20 flex items-end justify-between gap-3 font-mono">
           <div className="flex flex-col">
-            <span className="text-[10px] font-mono uppercase text-ink/50 font-bold tracking-widest">
+            <span className="text-[10px] uppercase text-ink/70 font-bold tracking-widest leading-none mb-1">
               PRICE
             </span>
-            <div className="flex items-baseline gap-2 font-mono">
-              <span className="text-base sm:text-lg font-bold text-ink tracking-tight">
-                {formatPaise(product.basePrice)}
+            <span className="text-base font-bold text-ink tracking-tight leading-tight">
+              {formatPaise(product.basePrice)}
+            </span>
+            {product.originalPrice && product.originalPrice > product.basePrice ? (
+              <span className="text-[11px] font-bold text-ink/50 line-through leading-tight">
+                {formatPaise(product.originalPrice)}
               </span>
-              {product.originalPrice && product.originalPrice > product.basePrice && (
-                <span className="text-xs font-bold text-ink/40 line-through">
-                  {formatPaise(product.originalPrice)}
-                </span>
-              )}
-            </div>
+            ) : (
+              <span className="text-[11px] font-bold opacity-0 leading-tight">
+                &nbsp;
+              </span>
+            )}
           </div>
 
           <Link
             href={`/product/${product.slug}`}
-            className="inline-flex items-center gap-1.5 bg-ink text-white hover:bg-flash text-xs font-mono font-bold px-3 py-2 border border-ink transition-colors uppercase"
+            className="inline-flex items-center gap-1.5 bg-ink text-white hover:bg-flash text-xs font-bold px-3 py-2 border border-ink transition-colors uppercase shrink-0"
             aria-label={`View details and select size for ${product.name}`}
           >
             <span>SELECT</span>

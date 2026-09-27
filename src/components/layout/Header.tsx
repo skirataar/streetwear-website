@@ -11,8 +11,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-hype border-b-2 border-ink">
-      {/* Top Banner / Ticker — flash bg */}
-      <div className="bg-flash text-white text-[11px] sm:text-xs font-mono font-bold tracking-wider py-1 px-4 flex items-center justify-between border-b border-ink">
+      {/* Top Banner / Ticker — black bg */}
+      <div className="bg-black text-white text-[11px] sm:text-xs font-mono font-bold tracking-wider py-1 px-4 flex items-center justify-between border-b border-white/10">
         <div className="flex items-center gap-2">
           <span className="inline-block w-2 h-2 rounded-full bg-white animate-pulse" />
           <span className="uppercase">STD PCO // LIVE BROADCAST ARCHIVE</span>
@@ -22,7 +22,7 @@ export function Header() {
           <span>•</span>
           <span>100% HEAVYWEIGHT COTTON</span>
         </div>
-        <div className="text-[10px] uppercase tracking-widest bg-ink text-white px-1.5 py-0.5 rounded-sm">
+        <div className="text-[10px] uppercase tracking-widest bg-white/10 text-white px-1.5 py-0.5 rounded-sm border border-white/20">
           IND // 90S-00S
         </div>
       </div>

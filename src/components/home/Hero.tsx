@@ -80,7 +80,7 @@ export function Hero({ latestProduct }: HeroProps) {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
                 href={dropLink}
-                className="inline-flex items-center gap-2 bg-flash hover:bg-flash/90 text-white font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-white/20 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg uppercase"
+                className="inline-flex items-center gap-2 bg-[#EBE6DF]/10 hover:bg-[#EBE6DF]/20 backdrop-blur-[10px] text-[#EBE6DF] font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-[#EBE6DF]/40 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg uppercase"
               >
                 <span>{latestProduct ? "SHOP THIS DROP" : "SHOP ALL DROPS"}</span>
                 <ArrowUpRight className="w-5 h-5" />
@@ -88,7 +88,7 @@ export function Hero({ latestProduct }: HeroProps) {
 
               <Link
                 href="/catalog"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-white/40 transition-all uppercase"
+                className="inline-flex items-center gap-2 bg-[#EBE6DF]/10 hover:bg-[#EBE6DF]/20 backdrop-blur-[10px] text-[#EBE6DF] font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-[#EBE6DF]/40 transition-all uppercase"
               >
                 <span>VIEW ALL DROPS</span>
               </Link>

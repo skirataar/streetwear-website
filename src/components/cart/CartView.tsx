@@ -44,13 +44,13 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
         <h3 className="font-display text-2xl uppercase tracking-tight text-ink">
           YOUR CART IS EMPTY
         </h3>
-        <p className="text-xs text-ink/60 max-w-xs font-body">
+        <p className="text-xs text-ink/80 max-w-xs font-body">
           No drops loaded in the cassette deck yet. Check out the latest DD National and Cybercafé collections.
         </p>
         <Link
           href="/catalog"
           onClick={onClose}
-          className="inline-flex items-center gap-2 bg-flash text-white px-6 py-2.5 font-mono font-bold text-xs uppercase border-2 border-ink hover:bg-flash/90 transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 bg-black text-white hover:bg-neutral-900 px-6 py-2.5 font-mono font-bold text-xs uppercase border-2 border-ink transition-colors shadow-sm"
         >
           <span>EXPLORE CATALOGUE</span>
           <ArrowRight className="w-4 h-4" />
@@ -66,7 +66,7 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
   return (
     <div className="flex flex-col font-mono text-ink">
       {/* Free Shipping Progress Bar */}
-      <div className="bg-hype/30 border-2 border-ink p-3 mb-4 text-xs">
+      <div className="bg-ink/5 border-2 border-ink p-3 mb-4 text-xs">
         <div className="flex justify-between font-bold text-[11px] uppercase mb-1">
           <span>
             {remainingForFreeShipping === 0
@@ -77,7 +77,7 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
         </div>
         <div className="w-full bg-ink/10 border border-ink h-2.5 overflow-hidden">
           <div
-            className="bg-hype h-full transition-all duration-300"
+            className="bg-black h-full transition-all duration-300"
             style={{ width: `${freeShippingProgress}%` }}
           />
         </div>
@@ -106,21 +106,21 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
                     <Link
                       href={`/product/${item.productSlug}`}
                       onClick={onClose}
-                      className="hover:text-flash transition-colors"
+                      className="text-ink hover:underline transition-colors"
                     >
                       {item.name}
                     </Link>
                   </h4>
                   <button
                     onClick={() => removeItem(item.variantId)}
-                    className="text-ink/40 hover:text-flash p-1"
+                    className="text-ink/50 hover:text-ink p-1"
                     aria-label={`Remove ${item.name} size ${item.size} from cart`}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="flex items-center gap-2 text-[11px] text-ink/60 font-bold uppercase mt-1">
+                <div className="flex items-center gap-2 text-[11px] text-ink/80 font-bold uppercase mt-1">
                   <span className="bg-ink/10 px-1.5 py-0.5 border border-ink/30">
                     SIZE: {item.size}
                   </span>
@@ -132,26 +132,26 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
 
               {/* Quantity Controls & Price */}
               <div className="flex items-center justify-between pt-2">
-                <div className="flex items-center border border-ink bg-white">
+                <div className="flex items-center border border-ink bg-white text-ink">
                   <button
                     onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
-                    className="px-2 py-0.5 text-xs font-bold hover:bg-ink/5"
+                    className="px-2 py-0.5 text-xs font-bold text-ink hover:bg-ink/5"
                     aria-label="Decrease quantity"
                   >
                     -
                   </button>
-                  <span className="px-2 text-xs font-bold">{item.quantity}</span>
+                  <span className="px-2 text-xs font-bold text-ink">{item.quantity}</span>
                   <button
                     onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
                     disabled={item.quantity >= item.maxStock}
-                    className="px-2 py-0.5 text-xs font-bold hover:bg-ink/5 disabled:opacity-30"
+                    className="px-2 py-0.5 text-xs font-bold text-ink hover:bg-ink/5 disabled:opacity-30"
                     aria-label="Increase quantity"
                   >
                     +
                   </button>
                 </div>
 
-                <div className="font-mono text-sm font-bold">
+                <div className="font-mono text-sm font-bold text-ink">
                   {formatPaise(item.price * item.quantity)}
                 </div>
               </div>
@@ -163,14 +163,14 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
       {/* Promo Code Form */}
       <div className="border-t-2 border-ink pt-4 mt-2">
         {promoCode ? (
-          <div className="flex items-center justify-between bg-hype/30 border border-ink p-2 text-xs font-bold">
+          <div className="flex items-center justify-between bg-ink/5 border border-ink p-2 text-xs font-bold">
             <div className="flex items-center gap-1.5 text-ink">
-              <Tag className="w-3.5 h-3.5 text-flash" />
+              <Tag className="w-3.5 h-3.5 text-ink" />
               <span>CODE {promoCode} APPLIED</span>
             </div>
             <button
               onClick={removePromoCode}
-              className="text-flash hover:underline text-[11px] uppercase"
+              className="text-ink hover:underline text-[11px] uppercase"
             >
               REMOVE
             </button>
@@ -182,45 +182,45 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
               placeholder="PROMO CODE (e.g. DD10, PCO50)"
               value={inputCode}
               onChange={(e) => setInputCode(e.target.value)}
-              className="flex-1 bg-white border border-ink px-3 py-1.5 text-xs font-mono uppercase focus:outline-hidden"
+              className="flex-1 bg-white border border-ink px-3 py-1.5 text-xs font-mono uppercase text-ink focus:outline-hidden"
             />
             <button
               type="submit"
-              className="bg-ink text-white px-3 py-1.5 text-xs font-bold uppercase hover:bg-flash transition-colors border border-ink"
+              className="bg-black text-white px-3 py-1.5 text-xs font-bold uppercase hover:bg-neutral-900 transition-colors border border-ink"
             >
               APPLY
             </button>
           </form>
         )}
         {promoError && (
-          <div className="text-flash text-[11px] mt-1 font-bold">{promoError}</div>
+          <div className="text-ink font-bold text-[11px] mt-1">{promoError}</div>
         )}
       </div>
 
       {/* Summary Calculations */}
       <div className="border-t-2 border-ink pt-4 mt-4 space-y-2 text-xs">
         <div className="flex justify-between">
-          <span className="text-ink/60">SUBTOTAL</span>
-          <span className="font-bold">{formatPaise(subtotalPaise)}</span>
+          <span className="text-ink/80 font-medium">SUBTOTAL</span>
+          <span className="font-bold text-ink">{formatPaise(subtotalPaise)}</span>
         </div>
 
         {discountPaise > 0 && (
-          <div className="flex justify-between text-flash font-bold">
+          <div className="flex justify-between text-ink font-bold">
             <span>PROMO DISCOUNT</span>
             <span>-{formatPaise(discountPaise)}</span>
           </div>
         )}
 
         <div className="flex justify-between">
-          <span className="text-ink/60">SHIPPING (PAN-INDIA)</span>
-          <span className="font-bold">
+          <span className="text-ink/80 font-medium">SHIPPING (PAN-INDIA)</span>
+          <span className="font-bold text-ink">
             {shippingPaise === 0 ? "FREE" : formatPaise(shippingPaise)}
           </span>
         </div>
 
         <div className="flex justify-between text-base font-bold border-t border-ink pt-2 text-ink">
           <span>TOTAL ESTIMATE</span>
-          <span className="text-flash">{formatPaise(totalPaise)}</span>
+          <span className="text-ink font-bold">{formatPaise(totalPaise)}</span>
         </div>
       </div>
 
@@ -229,7 +229,7 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
         <Link
           href="/checkout"
           onClick={onClose}
-          className="w-full flex items-center justify-center gap-2 bg-flash hover:bg-flash/90 text-white py-3.5 px-4 font-mono font-bold text-sm uppercase border-2 border-ink shadow-md transition-all active:translate-y-0.5 text-center"
+          className="w-full flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white py-3.5 px-4 font-mono font-bold text-sm uppercase border-2 border-ink shadow-md transition-all active:translate-y-0.5 text-center"
         >
           <span>PROCEED TO CHECKOUT</span>
           <ArrowRight className="w-4 h-4" />

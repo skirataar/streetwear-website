@@ -141,9 +141,9 @@ export default async function HomePage() {
       {/* 5. Newsletter / Drop Alert — ink section (hard cut from hype) */}
       <section className="bg-ink text-white py-16 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-std p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8" style={{ borderColor: "#c5fe02", boxShadow: "4px 4px 0px #c5fe02" }}>
+          <div className="border-std p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8" style={{ borderColor: "#464196", boxShadow: "4px 4px 0px #464196" }}>
             <div className="space-y-3 max-w-xl">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase text-hype">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase text-flash">
                 <Radio className="w-4 h-4 animate-pulse" />
                 <span>EARLY FREQUENCY TRANSMISSION</span>
               </div>
@@ -159,11 +159,11 @@ export default async function HomePage() {
               <input
                 type="text"
                 placeholder="ENTER EMAIL OR PHONE"
-                className="bg-ink border-2 border-white/20 text-white px-4 py-3 text-xs font-mono uppercase focus:outline-hidden focus:border-hype min-w-[240px] placeholder:text-neutral-500"
+                className="bg-ink border-2 border-white/20 text-white px-4 py-3 text-xs font-mono uppercase focus:outline-hidden focus:border-white min-w-[240px] placeholder:text-neutral-500"
               />
               <button
                 type="submit"
-                className="bg-flash text-white hover:bg-flash/90 px-6 py-3 font-mono font-bold text-xs uppercase border-2 border-flash shadow-sm transition-colors whitespace-nowrap"
+                className="bg-black hover:bg-neutral-900 text-white font-mono font-bold text-xs uppercase px-6 py-3 border-2 border-white/20 shadow-sm transition-colors whitespace-nowrap"
               >
                 JOIN BROADCAST
               </button>

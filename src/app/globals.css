@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  /* thehypeco.in 4-token palette */
-  --color-hype: #c5fe02;
-  --color-ink: #141414;
-  --color-flash: #F0175C;
+  --color-hype: var(--bg-color);
+  --color-ink: var(--ink-color);
+  --color-flash: var(--accent-color);
+  --color-beige: #EBE6DF;
 
   --font-display: var(--font-anton), Impact, sans-serif;
   --font-body: var(--font-karla), sans-serif;
@@ -12,9 +12,10 @@
 }
 
 :root {
-  --color-hype: #c5fe02;
-  --color-ink: #141414;
-  --color-flash: #F0175C;
+  --bg-color: #464196;        /* Midnight Indigo (Primary Background / Canvas) */
+  --text-color: #EBE6DF;      /* Beige (Primary Text & Anchors) */
+  --accent-color: #FFFFFF;    /* Crisp White (Accent / Primary Highlight) */
+  --ink-color: #141414;       /* VCR Background / Dark Ink */
 }
 
 * {
@@ -22,13 +23,17 @@
 }
 
 body {
-  background-color: #c5fe02;
-  color: #141414;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: var(--font-karla), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+a {
+  color: inherit;
 }
 
 /* CRT scanlines effect */

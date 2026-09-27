@@ -50,16 +50,16 @@ export function VariantSelector({ product }: VariantSelectorProps) {
   return (
     <div className="space-y-6 font-mono">
       {/* Price Display */}
-      <div className="border-b-2 border-ink pb-4">
-        <div className="text-xs text-ink/60 font-bold uppercase tracking-wider mb-1">
+      <div className="border-b-2 border-[#EBE6DF]/30 pb-4">
+        <div className="text-xs text-[#EBE6DF]/80 font-bold uppercase tracking-wider mb-1">
           MRP (INCL. OF ALL TAXES)
         </div>
         <div className="flex items-baseline gap-3">
-          <span className="text-3xl sm:text-4xl font-bold font-mono text-ink tracking-tight">
+          <span className="text-3xl sm:text-4xl font-bold font-mono text-[#EBE6DF] tracking-tight">
             {formatPaise(currentPrice)}
           </span>
           {product.originalPrice && product.originalPrice > currentPrice && (
-            <span className="text-xl sm:text-2xl font-bold font-mono text-ink/40 line-through">
+            <span className="text-xl sm:text-2xl font-bold font-mono text-[#EBE6DF]/50 line-through">
               {formatPaise(product.originalPrice)}
             </span>
           )}
@@ -69,11 +69,11 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       {/* Size Selector */}
       <div className="space-y-2.5">
         <div className="flex items-center justify-between text-xs font-bold uppercase">
-          <span className="text-ink">SELECT SIZE:</span>
+          <span className="text-[#EBE6DF]">SELECT SIZE:</span>
           <button
             type="button"
             onClick={() => setShowSizeGuide(!showSizeGuide)}
-            className="text-flash hover:underline inline-flex items-center gap-1"
+            className="text-flash hover:underline inline-flex items-center gap-1 font-bold"
           >
             <Info className="w-3.5 h-3.5" />
             {showSizeGuide ? "HIDE SIZE CHART" : "SIZE GUIDE (INCHES)"}
@@ -97,15 +97,15 @@ export function VariantSelector({ product }: VariantSelectorProps) {
                 }}
                 className={`py-3 px-2 text-center font-mono font-bold text-sm border-2 transition-all relative ${
                   outOfStock
-                    ? "bg-ink/10 border-ink/20 text-ink/30 cursor-not-allowed line-through"
+                    ? "bg-white/10 border-white/20 text-white/40 cursor-not-allowed line-through"
                     : isSelected
-                    ? "bg-ink text-white border-ink shadow-md"
-                    : "bg-white text-ink border-ink hover:bg-hype/20"
+                    ? "bg-black text-white border-white shadow-md"
+                    : "bg-white text-ink border-ink hover:bg-white/90"
                 }`}
               >
                 {v.size}
                 {v.stock > 0 && v.stock <= 5 && (
-                  <span className="absolute -top-2 -right-1 bg-flash text-white text-[8px] px-1 py-0.5 rounded-sm font-bold border border-ink">
+                  <span className="absolute -top-2 -right-1 bg-flash text-ink text-[8px] px-1 py-0.5 rounded-sm font-bold border border-ink">
                     {v.stock}L
                   </span>
                 )}
@@ -130,11 +130,11 @@ export function VariantSelector({ product }: VariantSelectorProps) {
 
       {/* Size Guide Table (collapsible) */}
       {showSizeGuide && (
-        <div className="bg-white border-2 border-ink p-4 text-xs font-mono space-y-2">
+        <div className="bg-white text-ink border-2 border-ink p-4 text-xs font-mono space-y-2">
           <div className="font-bold text-ink uppercase border-b border-ink/20 pb-1">
             {product.fit} FIT MEASUREMENT CHART (INCHES)
           </div>
-          <table className="w-full text-center border-collapse">
+          <table className="w-full text-center border-collapse text-ink">
             <thead>
               <tr className="bg-ink text-white text-[10px]">
                 <th className="p-1">SIZE</th>
@@ -143,7 +143,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
                 <th className="p-1">SHOULDER</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-ink/10 text-[11px]">
+            <tbody className="divide-y divide-ink/10 text-[11px] text-ink">
               <tr><td className="p-1 font-bold">S</td><td>42&quot;</td><td>28&quot;</td><td>20&quot;</td></tr>
               <tr><td className="p-1 font-bold">M</td><td>44&quot;</td><td>29&quot;</td><td>21&quot;</td></tr>
               <tr><td className="p-1 font-bold">L</td><td>46&quot;</td><td>30&quot;</td><td>22&quot;</td></tr>
@@ -151,7 +151,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
               <tr><td className="p-1 font-bold">XXL</td><td>50&quot;</td><td>32&quot;</td><td>24&quot;</td></tr>
             </tbody>
           </table>
-          <p className="text-[10px] text-ink/50 italic">
+          <p className="text-[10px] text-ink/70 italic">
             *Oversized fit is cut 2 inches wider than standard Indian streetwear specs. Order your regular size for intended drape.
           </p>
         </div>
@@ -160,17 +160,17 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       {/* Quantity Picker & Add to Cart Button */}
       <div className="space-y-3 pt-2">
         <div className="flex items-center gap-3">
-          <div className="flex items-center border-2 border-ink bg-white">
+          <div className="flex items-center border-2 border-ink bg-white text-ink">
             <button
               type="button"
               disabled={quantity <= 1 || isOutOfStock}
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="px-3 py-3 text-sm font-bold hover:bg-ink/5 disabled:opacity-40"
+              className="px-3 py-3 text-sm font-bold text-ink hover:bg-ink/10 disabled:opacity-40"
               aria-label="Decrease quantity"
             >
               -
             </button>
-            <span className="px-4 py-3 text-sm font-bold text-center min-w-[40px]">
+            <span className="px-4 py-3 text-sm font-bold text-ink text-center min-w-[40px]">
               {quantity}
             </span>
             <button
@@ -179,24 +179,24 @@ export function VariantSelector({ product }: VariantSelectorProps) {
               onClick={() =>
                 setQuantity(Math.min(activeVariant?.stock || 1, quantity + 1))
               }
-              className="px-3 py-3 text-sm font-bold hover:bg-ink/5 disabled:opacity-40"
+              className="px-3 py-3 text-sm font-bold text-ink hover:bg-ink/10 disabled:opacity-40"
               aria-label="Increase quantity"
             >
               +
             </button>
           </div>
 
-          {/* Add to Cart — flash is the ONE CTA color per brief */}
+          {/* Add to Cart Button */}
           <button
             type="button"
             disabled={isOutOfStock}
             onClick={handleAddToCart}
             className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink transition-all ${
               isOutOfStock
-                ? "bg-ink/10 text-ink/30 border-ink/20 cursor-not-allowed"
+                ? "bg-white/10 text-white/40 border-white/20 cursor-not-allowed"
                 : addedAnimation
-                ? "bg-hype text-ink"
-                : "bg-flash hover:bg-flash/90 text-white border-std-hover shadow-md active:translate-y-0.5"
+                ? "bg-flash text-ink font-bold"
+                : "bg-flash text-ink font-bold hover:bg-white/90 border-std-hover shadow-md active:translate-y-0.5"
             }`}
           >
             {addedAnimation ? (
@@ -217,11 +217,11 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       </div>
 
       {/* Streetwear Garment Specs */}
-      <div className="bg-white border-2 border-ink p-4 space-y-3 text-xs">
+      <div className="bg-white border-2 border-ink p-4 space-y-3 text-xs text-ink">
         <div className="font-bold text-ink uppercase tracking-wider border-b border-ink/20 pb-1">
           // ARCHIVE GARMENT SPECIFICATIONS
         </div>
-        <ul className="space-y-1.5 text-ink/70 text-[11px]">
+        <ul className="space-y-1.5 text-ink font-medium text-[11px]">
           <li>• <strong>FABRIC:</strong> 240 GSM 100% Combed Compact Cotton</li>
           <li>• <strong>PRINT:</strong> High-Density Plastisol &amp; Vintage Screenprint</li>
           <li>• <strong>WASH:</strong> Pre-shrunk silicone &amp; enzyme bio-washed</li>

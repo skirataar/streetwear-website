@@ -9,11 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // thehypeco.in palette — 4 tokens only
-        hype: "#c5fe02",   // primary bg (full-bleed green sections)
-        ink: "#141414",    // alternate section bg + borders + text on hype
-        flash: "#F0175C",  // CTA buttons only (Add to Cart, Shop the Drop)
-        // white and neutral-400 from Tailwind core cover the rest
+        hype: "var(--bg-color)",      // Midnight Indigo (#464196)
+        ink: "var(--ink-color)",      // VCR dark background (#141414)
+        flash: "var(--accent-color)", // Crisp White Accent (#FFFFFF)
+        beige: "#EBE6DF",             // Beige text & borders (#EBE6DF)
       },
       fontFamily: {
         display: ["var(--font-anton)", "sans-serif"],
