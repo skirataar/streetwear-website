@@ -14,16 +14,16 @@ export default function CartPage() {
           <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
             // CASSETTE DECK
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl uppercase tracking-tight text-ink">
+          <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink">
             SHOPPING CART
           </h1>
         </div>
 
         <Link
           href="/catalog"
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-ink hover:underline transition-colors"
+          className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-mono font-bold uppercase text-ink hover:underline transition-colors shrink-0"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>CONTINUE BROWSING</span>
         </Link>
       </div>

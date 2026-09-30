@@ -44,10 +44,10 @@ export function Header() {
             THC
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-2xl sm:text-3xl tracking-tight leading-none text-ink uppercase">
+            <span className="font-display text-xl sm:text-3xl tracking-tight leading-none text-ink uppercase">
               THE HYPE // CO.
             </span>
-            <span className="font-mono text-[9px] tracking-widest text-ink/60 font-bold leading-none uppercase">
+            <span className="font-mono text-[8px] sm:text-[9px] tracking-widest text-ink/60 font-bold leading-none uppercase">
               THE HYPE CO. STREETWEAR
             </span>
           </div>
@@ -70,10 +70,10 @@ export function Header() {
         </nav>
 
         {/* Action Buttons: Account & Cart */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3">
           <Link
             href="/account/orders"
-            className="p-2 text-ink hover:text-ink/70 transition-colors rounded-sm hover:bg-ink/10"
+            className="p-1.5 sm:p-2 text-ink hover:text-ink/70 transition-colors rounded-sm hover:bg-ink/10"
             aria-label="Account and orders"
             title="My Orders"
           >
@@ -82,7 +82,7 @@ export function Header() {
 
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center gap-2 bg-ink text-white px-3 py-1.5 rounded-none border-2 border-ink hover:bg-white hover:text-ink hover:border-ink transition-all font-mono text-xs font-bold active:translate-y-0.5"
+            className="relative flex items-center gap-1.5 sm:gap-2 bg-ink text-white px-2 sm:px-3 py-1.5 rounded-none border-2 border-ink hover:bg-white hover:text-ink hover:border-ink transition-all font-mono text-xs font-bold active:translate-y-0.5"
             aria-label={`Open shopping cart with ${totalItemsCount} items`}
           >
             <ShoppingBag className="w-4 h-4" />

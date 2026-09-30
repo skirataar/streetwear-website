@@ -118,10 +118,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1.5">
               <span>THE HYPE CO. // {product.collectionName || product.fit || "STREETWEAR"} RELEASE</span>
             </div>
-            <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink leading-tight">
+            <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink leading-tight">
               {product.name}
             </h1>
-            <p className="font-body text-sm text-ink/80 mt-3 leading-relaxed">
+            <p className="font-body text-xs sm:text-sm text-ink/80 mt-2 sm:mt-3 leading-relaxed">
               {product.description}
             </p>
           </div>

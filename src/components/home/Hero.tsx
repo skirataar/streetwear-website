@@ -64,31 +64,31 @@ export function Hero({ latestProduct }: HeroProps) {
             </div>
 
             {/* Large Anton Headline */}
-            <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight uppercase leading-[0.9] text-white drop-shadow-md">
+            <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase leading-[0.95] sm:leading-[0.9] text-white drop-shadow-md">
               POP CULTURE <br />
               <span className="text-hype">FROM THE 90S</span> <br />
               STREETS OF BHARAT
             </h1>
 
-            <p className="font-body text-base sm:text-xl text-white/90 max-w-2xl font-medium leading-relaxed">
+            <p className="font-body text-xs sm:text-lg md:text-xl text-white/90 max-w-2xl font-medium leading-relaxed">
               {latestProduct?.description
                 ? latestProduct.description
                 : "Heavyweight 240 GSM tees inspired by Doordarshan test signals, cassette rewind hacks, yellow STD booths, and Sharjah cricket glory."}
             </p>
 
             {/* CTAs */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
               <Link
                 href={dropLink}
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-[10px] text-white font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-white/40 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg uppercase"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-[10px] text-white font-mono font-bold text-xs sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-white/40 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg uppercase"
               >
                 <span>{latestProduct ? "SHOP THIS DROP" : "SHOP ALL DROPS"}</span>
-                <ArrowUpRight className="w-5 h-5" />
+                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </Link>
 
               <Link
                 href="/catalog"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-[10px] text-white font-mono font-bold text-sm sm:text-base px-6 py-3 border-2 border-white/40 transition-all uppercase"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-[10px] text-white font-mono font-bold text-xs sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-white/40 transition-all uppercase"
               >
                 <span>VIEW ALL DROPS</span>
               </Link>

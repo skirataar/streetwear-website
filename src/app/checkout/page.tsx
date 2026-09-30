@@ -279,7 +279,7 @@ export default function CheckoutPage() {
             <div className="text-xs font-bold uppercase text-ink/70 tracking-widest mb-1">
               // EXPRESS CHECKOUT • GUEST &amp; AUTH
             </div>
-            <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink">
+            <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink">
               SHIPPING &amp; PAYMENT
             </h1>
           </div>

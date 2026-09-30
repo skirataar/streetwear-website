@@ -71,7 +71,7 @@ export default function AboutPage() {
             <span>DOSSIER // THE HYPE CO. STREETWEAR</span>
           </div>
 
-          <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight text-ink leading-none">
+          <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tight text-ink leading-none">
             HEAVYWEIGHT FIT. <br />
             NO COMPROMISE.
           </h1>
@@ -105,7 +105,7 @@ export default function AboutPage() {
               <span>OUR STORY &amp; ETHOS</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink leading-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink leading-tight">
               BUILT FOR ROTATION. <br />
               NOT DISPOSABLE TRENDS.
             </h2>
@@ -173,7 +173,7 @@ export default function AboutPage() {
           <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
             // CORE STANDARDS
           </div>
-          <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink">
+          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink">
             HOW WE MAKE IT
           </h2>
         </div>
@@ -245,7 +245,7 @@ export default function AboutPage() {
               <Sparkles className="w-4 h-4 text-white" />
               <span>THE HYPE CO. STOREFRONT</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-white leading-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-white leading-tight">
               EXPLORE THE LATEST DROPS
             </h2>
             <p className="font-body text-xs sm:text-sm text-neutral-300 leading-relaxed">

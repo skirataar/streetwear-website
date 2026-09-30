@@ -72,7 +72,7 @@ export default function AccountOrdersPage() {
           <div className="text-xs font-bold uppercase text-ink tracking-widest mb-1">
             // SUBSCRIBER ACCOUNT &amp; ORDER ARCHIVE
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl uppercase tracking-tight text-ink">
+          <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink">
             MY ACCOUNT &amp; ORDERS
           </h1>
         </div>
@@ -95,7 +95,7 @@ export default function AccountOrdersPage() {
               <LogIn className="w-4 h-4" />
               <span>SUPABASE AUTH // PASSWORDLESS LOGIN</span>
             </div>
-            <h2 className="font-display text-3xl uppercase tracking-tight text-ink">
+            <h2 className="font-display text-2xl sm:text-3xl uppercase tracking-tight text-ink">
               ACCESS YOUR ORDER HISTORY
             </h2>
             <p className="font-body text-xs text-ink/60 leading-relaxed">

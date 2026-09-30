@@ -48,10 +48,10 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
         <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
           // ARCHIVE CATALOGUE • INDEX
         </div>
-        <h1 className="font-display text-4xl sm:text-7xl uppercase tracking-tight text-ink">
+        <h1 className="font-display text-3xl sm:text-5xl md:text-7xl uppercase tracking-tight text-ink">
           ALL DROPS &amp; CASSETTE CUTS
         </h1>
-        <p className="font-body text-sm sm:text-base text-ink/70 max-w-2xl mt-2 leading-relaxed">
+        <p className="font-body text-xs sm:text-base text-ink/70 max-w-2xl mt-2 leading-relaxed">
           Screenprinted on 240+ GSM heavyweight cotton. Filter by silhouette, size, or historical pop-culture era.
         </p>
       </div>

@@ -34,17 +34,17 @@ export default async function HomePage() {
               <Flame className="w-4 h-4" />
               <span>CURRENT BROADCAST ARCHIVE</span>
             </div>
-            <h2 className="font-display text-4xl sm:text-6xl text-ink uppercase tracking-tight leading-none">
+            <h2 className="font-display text-3xl sm:text-5xl md:text-6xl text-ink uppercase tracking-tight leading-none">
               FEATURED DROPS
             </h2>
           </div>
 
           <Link
             href="/catalog"
-            className="group/btn inline-flex items-center gap-2 bg-ink text-white hover:bg-flash hover:text-ink font-mono font-bold text-xs uppercase px-4 py-2.5 border border-ink transition-colors self-start md:self-auto shadow-sm"
+            className="group/btn inline-flex items-center gap-1.5 sm:gap-2 bg-ink text-white hover:bg-flash hover:text-ink font-mono font-bold text-[11px] sm:text-xs uppercase px-3 sm:px-4 py-2 sm:py-2.5 border border-ink transition-colors self-start md:self-auto shadow-sm"
           >
             <span className="text-white group-hover/btn:text-ink transition-colors">VIEW COMPLETE ARCHIVE</span>
-            <ArrowRight className="w-4 h-4 text-white group-hover/btn:text-ink transition-colors" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white group-hover/btn:text-ink transition-colors" />
           </Link>
         </div>
 
@@ -60,13 +60,13 @@ export default async function HomePage() {
       <section className="bg-ink text-white py-16 border-y-4 border-flash relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-            <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest">
+            <span className="text-[10px] sm:text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest">
               // FREQUENCY BROADCAST ARCHIVE
             </span>
-            <h2 className="font-display text-4xl sm:text-6xl uppercase tracking-tight text-white">
+            <h2 className="font-display text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight text-white">
               NEW ARRIVALS
             </h2>
-            <p className="font-body text-sm sm:text-base text-neutral-400 leading-relaxed">
+            <p className="font-body text-xs sm:text-base text-neutral-400 leading-relaxed">
               Heavyweight 240+ GSM streetwear crafted with high-density graphics, boxy oversized drapes, and Indian subculture nostalgia.
             </p>
           </div>
@@ -147,7 +147,7 @@ export default async function HomePage() {
                 <Radio className="w-4 h-4 animate-pulse" />
                 <span>EARLY FREQUENCY TRANSMISSION</span>
               </div>
-              <h3 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-white">
+              <h3 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-white leading-tight">
                 GET NOTIFIED BEFORE THE NEXT TAPE DROPS
               </h3>
               <p className="text-xs sm:text-sm font-body text-neutral-400 leading-relaxed">

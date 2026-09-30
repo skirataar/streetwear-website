@@ -55,11 +55,11 @@ export function VariantSelector({ product }: VariantSelectorProps) {
           MRP (INCL. OF ALL TAXES)
         </div>
         <div className="flex items-baseline gap-3">
-          <span className="text-3xl sm:text-4xl font-bold font-mono text-ink tracking-tight">
+          <span className="text-2xl sm:text-4xl font-bold font-mono text-ink tracking-tight">
             {formatPaise(currentPrice)}
           </span>
           {product.originalPrice && product.originalPrice > currentPrice && (
-            <span className="text-xl sm:text-2xl font-bold font-mono text-ink/50 line-through">
+            <span className="text-lg sm:text-2xl font-bold font-mono text-ink/50 line-through">
               {formatPaise(product.originalPrice)}
             </span>
           )}
@@ -68,7 +68,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
 
       {/* Size Selector */}
       <div className="space-y-2.5">
-        <div className="flex items-center justify-between text-xs font-bold uppercase">
+        <div className="flex flex-wrap items-center justify-between gap-1 text-[11px] sm:text-xs font-bold uppercase">
           <span className="text-ink font-bold">SELECT SIZE:</span>
           <button
             type="button"
@@ -81,7 +81,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
         </div>
 
         {/* Size Buttons Matrix */}
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
           {product.variants.map((v) => {
             const outOfStock = v.stock <= 0;
             const isSelected = selectedSize === v.size;
@@ -95,7 +95,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
                   setSelectedSize(v.size);
                   setQuantity(1);
                 }}
-                className={`py-3 px-2 text-center font-mono font-bold text-sm border-2 transition-all relative ${
+                className={`py-2.5 sm:py-3 px-1 sm:px-2 text-center font-mono font-bold text-xs sm:text-sm border-2 transition-all relative ${
                   outOfStock
                     ? "bg-ink/10 border-ink/20 text-ink/40 cursor-not-allowed line-through"
                     : isSelected
@@ -191,7 +191,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
             type="button"
             disabled={isOutOfStock}
             onClick={handleAddToCart}
-            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink transition-all duration-200 ${
+            className={`flex-1 flex items-center justify-center gap-2 py-3 sm:py-3.5 px-3 sm:px-6 font-mono font-bold text-xs sm:text-base uppercase border-2 border-ink transition-all duration-200 ${
               isOutOfStock
                 ? "bg-ink/10 text-ink/30 border-ink/20 cursor-not-allowed"
                 : addedAnimation
