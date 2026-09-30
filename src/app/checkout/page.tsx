@@ -256,7 +256,7 @@ export default function CheckoutPage() {
         </p>
         <Link
           href="/catalog"
-          className="inline-flex items-center gap-2 bg-flash text-white px-6 py-3 font-mono font-bold text-xs uppercase border-2 border-ink"
+          className="inline-flex items-center gap-2 bg-ink text-white hover:bg-white hover:text-ink px-6 py-3 font-mono font-bold text-xs uppercase border-2 border-ink shadow-sm transition-all"
         >
           <span>VIEW CATALOGUE</span>
           <ArrowRight className="w-4 h-4" />
@@ -276,7 +276,7 @@ export default function CheckoutPage() {
         {/* Top Header */}
         <div className="flex items-center justify-between border-b-4 border-ink pb-4 mb-8">
           <div>
-            <div className="text-xs font-bold uppercase text-flash tracking-widest mb-1">
+            <div className="text-xs font-bold uppercase text-ink/70 tracking-widest mb-1">
               // EXPRESS CHECKOUT • GUEST &amp; AUTH
             </div>
             <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink">
@@ -286,7 +286,7 @@ export default function CheckoutPage() {
 
           <Link
             href="/cart"
-            className="inline-flex items-center gap-1 text-xs font-bold uppercase text-ink hover:text-flash transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-bold uppercase text-ink hover:underline transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>EDIT CART</span>
@@ -294,7 +294,7 @@ export default function CheckoutPage() {
         </div>
 
         {errorMessage && (
-          <div className="bg-flash text-white p-3 text-xs font-bold border-2 border-ink mb-6">
+          <div className="bg-red-600 text-white p-3 text-xs font-bold border-2 border-ink mb-6">
             ⚠️ {errorMessage}
           </div>
         )}
@@ -497,7 +497,7 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full mt-4 flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white py-4 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink shadow-lg transition-all active:translate-y-0.5 disabled:opacity-50"
+              className="w-full mt-4 flex items-center justify-center gap-2 bg-ink text-white hover:bg-white hover:text-ink py-4 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink shadow-lg transition-all active:translate-y-0.5 disabled:opacity-50"
             >
               {isLoading ? (
                 <span>INITIALIZING SECURE RAZORPAY GATEWAY...</span>

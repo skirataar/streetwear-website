@@ -50,16 +50,16 @@ export function VariantSelector({ product }: VariantSelectorProps) {
   return (
     <div className="space-y-6 font-mono">
       {/* Price Display */}
-      <div className="border-b-2 border-[#EBE6DF]/30 pb-4">
-        <div className="text-xs text-[#EBE6DF]/80 font-bold uppercase tracking-wider mb-1">
+      <div className="border-b-2 border-ink/20 pb-4">
+        <div className="text-xs text-ink/80 font-bold uppercase tracking-wider mb-1">
           MRP (INCL. OF ALL TAXES)
         </div>
         <div className="flex items-baseline gap-3">
-          <span className="text-3xl sm:text-4xl font-bold font-mono text-[#EBE6DF] tracking-tight">
+          <span className="text-3xl sm:text-4xl font-bold font-mono text-ink tracking-tight">
             {formatPaise(currentPrice)}
           </span>
           {product.originalPrice && product.originalPrice > currentPrice && (
-            <span className="text-xl sm:text-2xl font-bold font-mono text-[#EBE6DF]/50 line-through">
+            <span className="text-xl sm:text-2xl font-bold font-mono text-ink/50 line-through">
               {formatPaise(product.originalPrice)}
             </span>
           )}
@@ -69,13 +69,13 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       {/* Size Selector */}
       <div className="space-y-2.5">
         <div className="flex items-center justify-between text-xs font-bold uppercase">
-          <span className="text-[#EBE6DF]">SELECT SIZE:</span>
+          <span className="text-ink font-bold">SELECT SIZE:</span>
           <button
             type="button"
             onClick={() => setShowSizeGuide(!showSizeGuide)}
-            className="text-flash hover:underline inline-flex items-center gap-1 font-bold"
+            className="text-ink hover:underline inline-flex items-center gap-1 font-bold"
           >
-            <Info className="w-3.5 h-3.5" />
+            <Info className="w-3.5 h-3.5 text-ink" />
             {showSizeGuide ? "HIDE SIZE CHART" : "SIZE GUIDE (INCHES)"}
           </button>
         </div>
@@ -97,15 +97,15 @@ export function VariantSelector({ product }: VariantSelectorProps) {
                 }}
                 className={`py-3 px-2 text-center font-mono font-bold text-sm border-2 transition-all relative ${
                   outOfStock
-                    ? "bg-white/10 border-white/20 text-white/40 cursor-not-allowed line-through"
+                    ? "bg-ink/10 border-ink/20 text-ink/40 cursor-not-allowed line-through"
                     : isSelected
-                    ? "bg-black text-white border-white shadow-md"
-                    : "bg-white text-ink border-ink hover:bg-white/90"
+                    ? "bg-black text-white border-black shadow-md"
+                    : "bg-white text-ink border-ink hover:bg-ink hover:text-white"
                 }`}
               >
                 {v.size}
                 {v.stock > 0 && v.stock <= 5 && (
-                  <span className="absolute -top-2 -right-1 bg-flash text-ink text-[8px] px-1 py-0.5 rounded-sm font-bold border border-ink">
+                  <span className="absolute -top-2 -right-1 bg-black text-white text-[8px] px-1 py-0.5 rounded-sm font-bold border border-white">
                     {v.stock}L
                   </span>
                 )}
@@ -117,13 +117,13 @@ export function VariantSelector({ product }: VariantSelectorProps) {
         {/* Stock status indicator */}
         <div className="text-xs font-bold pt-1">
           {isOutOfStock ? (
-            <span className="text-flash uppercase">● SOLD OUT IN THIS SIZE</span>
+            <span className="text-ink/60 uppercase">● SOLD OUT IN THIS SIZE</span>
           ) : activeVariant.stock <= 5 ? (
-            <span className="text-flash uppercase animate-pulse">
+            <span className="text-ink uppercase font-bold animate-pulse">
               ● HURRY: ONLY {activeVariant.stock} UNITS LEFT IN BATCH
             </span>
           ) : (
-            <span className="text-flash uppercase font-bold">● IN STOCK // READY TO DISPATCH</span>
+            <span className="text-ink uppercase font-bold">● IN STOCK // READY TO DISPATCH</span>
           )}
         </div>
       </div>
@@ -191,12 +191,12 @@ export function VariantSelector({ product }: VariantSelectorProps) {
             type="button"
             disabled={isOutOfStock}
             onClick={handleAddToCart}
-            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-6 font-mono font-bold text-sm sm:text-base uppercase border-2 border-ink transition-all duration-200 ${
               isOutOfStock
-                ? "bg-white/10 text-white/40 border-white/20 cursor-not-allowed"
+                ? "bg-ink/10 text-ink/30 border-ink/20 cursor-not-allowed"
                 : addedAnimation
-                ? "bg-flash text-ink font-bold"
-                : "bg-flash text-ink font-bold hover:bg-white/90 border-std-hover shadow-md active:translate-y-0.5"
+                ? "bg-black text-white font-bold"
+                : "bg-ink text-white hover:bg-white hover:text-ink hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 shadow-sm"
             }`}
           >
             {addedAnimation ? (

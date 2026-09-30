@@ -41,7 +41,7 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
       {/* Top Filter Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink/20 pb-3">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink">
-          <SlidersHorizontal className="w-4 h-4 text-flash" />
+          <SlidersHorizontal className="w-4 h-4 text-ink" />
           <span>FILTER ARCHIVE MATRIX</span>
           <span className="bg-ink text-white px-2 py-0.5 text-[10px] rounded-sm font-bold">
             {totalResults} {totalResults === 1 ? "PIECE" : "PIECES"}
@@ -51,7 +51,7 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
         {hasActiveFilters && (
           <button
             onClick={resetFilters}
-            className="inline-flex items-center gap-1 text-[11px] text-flash font-bold uppercase hover:underline"
+            className="inline-flex items-center gap-1 text-[11px] text-ink font-bold uppercase hover:underline"
           >
             <RotateCcw className="w-3 h-3" />
             RESET FILTERS
@@ -95,7 +95,7 @@ export function FilterBar({ collections, totalResults }: FilterBarProps) {
                 onClick={() => updateParam("size", sz === "all" ? "all" : sz)}
                 className={`w-9 py-1.5 text-center text-[11px] font-bold uppercase border border-ink transition-all ${
                   currentSize.toUpperCase() === sz.toUpperCase()
-                    ? "bg-flash text-white"
+                    ? "bg-ink text-white"
                     : "bg-white text-ink hover:bg-ink/10"
                 }`}
               >

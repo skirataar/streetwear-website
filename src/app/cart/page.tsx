@@ -11,7 +11,7 @@ export default function CartPage() {
       {/* Top Header */}
       <div className="flex items-center justify-between border-b-4 border-ink pb-4 mb-6">
         <div>
-          <div className="text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1">
+          <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
             // CASSETTE DECK
           </div>
           <h1 className="font-display text-4xl sm:text-5xl uppercase tracking-tight text-ink">
@@ -21,7 +21,7 @@ export default function CartPage() {
 
         <Link
           href="/catalog"
-          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-ink hover:text-flash transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-ink hover:underline transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>CONTINUE BROWSING</span>

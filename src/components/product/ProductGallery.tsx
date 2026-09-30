@@ -27,7 +27,7 @@ export function ProductGallery({ images, name, fit }: ProductGalleryProps) {
       {/* Main Image with Tracking Glitch */}
       <div className="relative border-std overflow-hidden bg-ink/5">
         {/* Fit Ribbon */}
-        <div className="absolute top-3 left-3 z-30 font-mono text-xs font-bold px-2.5 py-1 uppercase bg-flash text-white border border-ink shadow-sm">
+        <div className="absolute top-3 left-3 z-30 font-mono text-xs font-bold px-2.5 py-1 uppercase bg-ink text-white border border-ink shadow-sm">
           {fit} FIT
         </div>
 
@@ -51,8 +51,8 @@ export function ProductGallery({ images, name, fit }: ProductGalleryProps) {
               onClick={() => setSelectedIndex(idx)}
               className={`relative aspect-square border-2 overflow-hidden transition-all ${
                 selectedIndex === idx
-                  ? "border-flash shadow-md scale-95 ring-2 ring-flash/50"
-                  : "border-ink hover:border-flash/70 opacity-80 hover:opacity-100"
+                  ? "border-ink shadow-md scale-95 ring-2 ring-ink/50"
+                  : "border-ink/40 hover:border-ink opacity-80 hover:opacity-100"
               }`}
               aria-label={`View image ${idx + 1} for ${name}`}
             >

@@ -69,7 +69,7 @@ export default function AccountOrdersPage() {
       {/* Header */}
       <div className="border-b-4 border-ink pb-4 mb-8 flex items-center justify-between">
         <div>
-          <div className="text-xs font-bold uppercase text-flash tracking-widest mb-1">
+          <div className="text-xs font-bold uppercase text-ink tracking-widest mb-1">
             // SUBSCRIBER ACCOUNT &amp; ORDER ARCHIVE
           </div>
           <h1 className="font-display text-4xl sm:text-5xl uppercase tracking-tight text-ink">
@@ -80,7 +80,7 @@ export default function AccountOrdersPage() {
         {user && (
           <button
             onClick={handleSignOut}
-            className="text-xs font-bold uppercase text-flash hover:underline border border-ink px-3 py-1.5 bg-white hover:bg-flash hover:text-white transition-colors"
+            className="text-xs font-bold uppercase text-ink hover:underline border border-ink px-3 py-1.5 bg-white hover:bg-ink hover:text-white transition-colors"
           >
             SIGN OUT
           </button>
@@ -91,7 +91,7 @@ export default function AccountOrdersPage() {
         /* Sign-In Form */
         <div className="bg-white border-std p-6 sm:p-10 space-y-6 max-w-lg mx-auto">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-flash text-xs font-bold uppercase">
+            <div className="flex items-center gap-2 text-ink/70 text-xs font-bold uppercase">
               <LogIn className="w-4 h-4" />
               <span>SUPABASE AUTH // PASSWORDLESS LOGIN</span>
             </div>
@@ -126,7 +126,7 @@ export default function AccountOrdersPage() {
 
             <button
               type="submit"
-              className="w-full bg-flash text-white py-3.5 px-4 font-mono font-bold text-xs sm:text-sm uppercase border-2 border-ink shadow-md hover:bg-flash/90 transition-colors active:translate-y-0.5"
+              className="w-full bg-ink text-white py-3.5 px-4 font-mono font-bold text-xs sm:text-sm uppercase border-2 border-ink shadow-md hover:bg-white hover:text-ink transition-colors active:translate-y-0.5"
             >
               SEND MAGIC LINK
             </button>
@@ -177,10 +177,10 @@ export default function AccountOrdersPage() {
 
             <Link
               href="/catalog"
-              className="inline-flex items-center gap-2 bg-ink text-white hover:bg-flash px-4 py-2.5 font-mono font-bold text-xs uppercase border border-ink transition-colors"
+              className="group/btn inline-flex items-center gap-2 bg-ink text-white hover:bg-flash hover:text-ink px-4 py-2.5 font-mono font-bold text-xs uppercase border border-ink transition-colors"
             >
-              <span>SHOP MORE DROPS</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span className="text-white group-hover/btn:text-ink transition-colors">SHOP MORE DROPS</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white group-hover/btn:text-ink transition-colors" />
             </Link>
           </div>
         </div>

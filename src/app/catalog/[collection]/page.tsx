@@ -108,16 +108,16 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         {allProducts.length === 0 ? (
           <div className="text-center py-24 bg-white border-2 border-ink font-mono space-y-4">
-            <div className="text-flash text-xl font-bold">TRANSMISSION OFFLINE</div>
+            <div className="text-ink text-xl font-bold">TRANSMISSION OFFLINE</div>
             <p className="text-xs text-ink/60 font-body max-w-sm mx-auto">
               No pieces are live in this era yet. New drops are loaded regularly — check back soon.
             </p>
             <Link
               href="/catalog"
-              className="inline-flex items-center gap-2 bg-ink text-white px-6 py-2.5 font-mono font-bold text-xs uppercase border-2 border-ink hover:bg-flash transition-colors"
+              className="group/btn inline-flex items-center gap-2 bg-ink text-white px-6 py-2.5 font-mono font-bold text-xs uppercase border-2 border-ink hover:bg-flash hover:text-ink transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
-              VIEW ALL DROPS
+              <ArrowLeft className="w-4 h-4 text-white group-hover/btn:text-ink transition-colors" />
+              <span className="text-white group-hover/btn:text-ink transition-colors">VIEW ALL DROPS</span>
             </Link>
           </div>
         ) : (
@@ -132,7 +132,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
             <div className="mt-16 pt-8 border-t-2 border-ink">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <div className="text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1">
+                  <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
                     // OTHER ERAS IN THE ARCHIVE
                   </div>
                   <h2 className="font-display text-2xl sm:text-3xl uppercase tracking-tight text-ink">
@@ -141,10 +141,10 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                 </div>
                 <Link
                   href="/catalog"
-                  className="inline-flex items-center gap-2 bg-ink text-white hover:bg-flash px-4 py-2.5 font-mono font-bold text-xs uppercase border border-ink transition-colors"
+                  className="group/btn inline-flex items-center gap-2 bg-ink text-white hover:bg-flash hover:text-ink px-4 py-2.5 font-mono font-bold text-xs uppercase border border-ink transition-colors"
                 >
-                  <span>FULL CATALOGUE</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span className="text-white group-hover/btn:text-ink transition-colors">FULL CATALOGUE</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-white group-hover/btn:text-ink transition-colors" />
                 </Link>
               </div>
 
@@ -155,7 +155,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                     <Link
                       key={c.id}
                       href={`/catalog/${c.slug}`}
-                      className="inline-flex items-center gap-2 bg-white border-2 border-ink px-4 py-2 font-mono text-xs font-bold uppercase text-ink hover:bg-flash hover:text-white hover:border-flash transition-all"
+                      className="inline-flex items-center gap-2 bg-white border-2 border-ink px-4 py-2 font-mono text-xs font-bold uppercase text-ink hover:bg-ink hover:text-white transition-all"
                     >
                       {c.name}
                     </Link>

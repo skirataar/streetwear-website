@@ -30,7 +30,7 @@ export default async function HomePage() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b-4 border-ink gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
               <Flame className="w-4 h-4" />
               <span>CURRENT BROADCAST ARCHIVE</span>
             </div>
@@ -41,10 +41,10 @@ export default async function HomePage() {
 
           <Link
             href="/catalog"
-            className="inline-flex items-center gap-2 bg-ink text-white hover:bg-flash font-mono font-bold text-xs uppercase px-4 py-2.5 border border-ink transition-colors self-start md:self-auto"
+            className="group/btn inline-flex items-center gap-2 bg-ink text-white hover:bg-flash hover:text-ink font-mono font-bold text-xs uppercase px-4 py-2.5 border border-ink transition-colors self-start md:self-auto shadow-sm"
           >
-            <span>VIEW COMPLETE ARCHIVE</span>
-            <ArrowRight className="w-4 h-4" />
+            <span className="text-white group-hover/btn:text-ink transition-colors">VIEW COMPLETE ARCHIVE</span>
+            <ArrowRight className="w-4 h-4 text-white group-hover/btn:text-ink transition-colors" />
           </Link>
         </div>
 
@@ -163,7 +163,7 @@ export default async function HomePage() {
               />
               <button
                 type="submit"
-                className="bg-black hover:bg-neutral-900 text-white font-mono font-bold text-xs uppercase px-6 py-3 border-2 border-white/20 shadow-sm transition-colors whitespace-nowrap"
+                className="bg-ink text-white hover:bg-flash hover:text-ink px-6 py-3 font-mono font-bold text-xs uppercase border-2 border-white/20 shadow-sm transition-colors whitespace-nowrap"
               >
                 JOIN BROADCAST
               </button>

@@ -68,16 +68,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="mb-6 font-mono text-xs text-[#EBE6DF]/70">
+      <nav aria-label="Breadcrumb" className="mb-6 font-mono text-xs text-ink/70">
         <ol className="flex items-center gap-2 flex-wrap">
           <li>
-            <Link href="/" className="hover:text-flash transition-colors">
+            <Link href="/" className="hover:text-ink hover:underline transition-colors">
               HOME
             </Link>
           </li>
           <li>/</li>
           <li>
-            <Link href="/catalog" className="hover:text-flash transition-colors">
+            <Link href="/catalog" className="hover:text-ink hover:underline transition-colors">
               CATALOGUE
             </Link>
           </li>
@@ -87,7 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <li>
                 <Link
                   href={`/catalog/${product.collectionSlug}`}
-                  className="hover:text-flash transition-colors uppercase"
+                  className="hover:text-ink hover:underline transition-colors uppercase"
                 >
                   {product.collectionName}
                 </Link>
@@ -95,7 +95,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <li>/</li>
             </>
           )}
-          <li className="font-bold text-[#EBE6DF] uppercase truncate max-w-[200px]">
+          <li className="font-bold text-ink uppercase truncate max-w-[200px]">
             {product.name}
           </li>
         </ol>
@@ -115,13 +115,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         {/* Right Column: Title, Description, Variants & Add to Cart */}
         <div className="lg:col-span-5 space-y-6">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1.5">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1.5">
               <span>THE HYPE CO. // {product.collectionName || product.fit || "STREETWEAR"} RELEASE</span>
             </div>
-            <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-[#EBE6DF] leading-tight">
+            <h1 className="font-display text-3xl sm:text-5xl uppercase tracking-tight text-ink leading-tight">
               {product.name}
             </h1>
-            <p className="font-body text-sm text-[#EBE6DF]/80 mt-3 leading-relaxed">
+            <p className="font-body text-sm text-ink/80 mt-3 leading-relaxed">
               {product.description}
             </p>
           </div>
@@ -130,21 +130,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <VariantSelector product={product} />
 
           {/* Value Highlights */}
-          <div className="grid grid-cols-2 gap-3 pt-4 border-t-2 border-[#EBE6DF]/20 text-[11px] font-mono text-[#EBE6DF]/80">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t-2 border-ink/20 text-[11px] font-mono text-ink font-bold">
             <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-flash shrink-0" />
+              <Truck className="w-4 h-4 text-ink shrink-0" />
               <span>FREE DELIVERY OVER ₹1,999</span>
             </div>
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-flash shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-ink shrink-0" />
               <span>100% SECURE RAZORPAY CHECKOUT</span>
             </div>
             <div className="flex items-center gap-2">
-              <RotateCcw className="w-4 h-4 text-flash shrink-0" />
+              <RotateCcw className="w-4 h-4 text-ink shrink-0" />
               <span>7-DAY EASY SIZE EXCHANGE</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-flash inline-block shrink-0 border border-white/20" />
+              <span className="w-3 h-3 rounded-full bg-ink inline-block shrink-0 border border-ink" />
               <span>MADE IN TIRUPUR, INDIA</span>
             </div>
           </div>
@@ -153,19 +153,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       {/* Related Archive Drops Section */}
       {fallbackRelated.length > 0 && (
-        <section className="border-t-4 border-[#EBE6DF]/30 pt-12 mt-10">
+        <section className="border-t-4 border-ink/30 pt-12 mt-10">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <div className="text-xs font-mono font-bold uppercase text-flash">
+              <div className="text-xs font-mono font-bold uppercase text-ink">
                 // COMPATIBLE FREQUENCIES
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tight text-[#EBE6DF]">
+              <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tight text-ink">
                 MORE FROM THE ARCHIVE
               </h2>
             </div>
             <Link
               href="/catalog"
-              className="text-xs font-mono font-bold uppercase text-[#EBE6DF] hover:text-flash hover:underline"
+              className="text-xs font-mono font-bold uppercase text-ink hover:underline"
             >
               VIEW ALL
             </Link>

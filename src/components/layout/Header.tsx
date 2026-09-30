@@ -32,7 +32,7 @@ export function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-ink hover:text-flash focus:outline-hidden"
+          className="md:hidden p-2 text-ink hover:text-ink/70 focus:outline-hidden"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -40,7 +40,7 @@ export function Header() {
 
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-7 h-7 bg-ink text-white flex items-center justify-center font-display text-base tracking-tighter border border-ink group-hover:bg-flash transition-colors">
+          <div className="w-7 h-7 bg-ink text-white flex items-center justify-center font-display text-base tracking-tighter border border-ink group-hover:bg-white group-hover:text-ink transition-colors">
             THC
           </div>
           <div className="flex flex-col">
@@ -57,13 +57,13 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wider uppercase text-ink" aria-label="Main navigation">
           <Link
             href="/catalog"
-            className="hover:text-flash hover:underline decoration-2 underline-offset-4 transition-colors"
+            className="hover:text-ink/70 hover:underline decoration-2 underline-offset-4 transition-colors"
           >
             All Products
           </Link>
           <Link
             href="/about"
-            className="hover:text-flash hover:underline decoration-2 underline-offset-4 transition-colors"
+            className="hover:text-ink/70 hover:underline decoration-2 underline-offset-4 transition-colors"
           >
             About Us
           </Link>
@@ -73,7 +73,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/account/orders"
-            className="p-2 text-ink hover:text-flash transition-colors rounded-sm hover:bg-ink/10"
+            className="p-2 text-ink hover:text-ink/70 transition-colors rounded-sm hover:bg-ink/10"
             aria-label="Account and orders"
             title="My Orders"
           >
@@ -82,7 +82,7 @@ export function Header() {
 
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center gap-2 bg-ink text-white px-3 py-1.5 rounded-none border-2 border-ink hover:bg-flash hover:border-flash transition-all font-mono text-xs font-bold active:translate-y-0.5"
+            className="relative flex items-center gap-2 bg-ink text-white px-3 py-1.5 rounded-none border-2 border-ink hover:bg-white hover:text-ink hover:border-ink transition-all font-mono text-xs font-bold active:translate-y-0.5"
             aria-label={`Open shopping cart with ${totalItemsCount} items`}
           >
             <ShoppingBag className="w-4 h-4" />
@@ -103,21 +103,21 @@ export function Header() {
           <Link
             href="/catalog"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-1.5 font-bold hover:text-flash"
+            className="block py-1.5 font-bold text-ink hover:underline"
           >
             ▶ ALL PRODUCTS
           </Link>
           <Link
             href="/about"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-1.5 font-bold hover:text-flash"
+            className="block py-1.5 font-bold text-ink hover:underline"
           >
             ▶ ABOUT US
           </Link>
           <Link
             href="/account/orders"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-1.5 font-bold text-ink/70 border-t border-ink/20 pt-2 hover:text-flash"
+            className="block py-1.5 font-bold text-ink/70 border-t border-ink/20 pt-2 hover:underline"
           >
             ▶ MY ACCOUNT / ORDERS
           </Link>

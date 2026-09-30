@@ -12,28 +12,26 @@
 }
 
 :root {
-  --bg-color: #464196;        /* Midnight Indigo (Primary Background / Canvas) */
-  --text-color: #EBE6DF;      /* Beige (Primary Text & Anchors) */
-  --accent-color: #FFFFFF;    /* Crisp White (Accent / Primary Highlight) */
-  --ink-color: #141414;       /* VCR Background / Dark Ink */
+  --bg-color: #d8f870;        /* Soft, 2-shades lighter Neon Green (Primary Canvas) */
+  --text-color: #141414;      /* Dark Ink Text for Canvas & Anchors */
+  --accent-color: #FFFFFF;    /* Crisp White Accent / Highlight */
+  --ink-color: #141414;       /* Black VCR Background / Dark Ink */
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-karla), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-karla), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 }
 
 /* CRT scanlines effect */

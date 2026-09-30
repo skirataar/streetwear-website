@@ -84,7 +84,7 @@ function SuccessContent() {
 
           <Link
             href="/catalog"
-            className="flex-1 inline-flex items-center justify-center gap-2 bg-flash text-white border-2 border-ink py-3 px-4 text-xs font-bold uppercase hover:bg-flash/90 transition-colors shadow-sm"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-ink text-white border-2 border-ink py-3 px-4 text-xs font-bold uppercase hover:bg-white hover:text-ink transition-colors shadow-sm"
           >
             <span>BACK TO ARCHIVE</span>
             <ArrowRight className="w-4 h-4" />

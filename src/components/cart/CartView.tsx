@@ -50,7 +50,7 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
         <Link
           href="/catalog"
           onClick={onClose}
-          className="inline-flex items-center gap-2 bg-black text-white hover:bg-neutral-900 px-6 py-2.5 font-mono font-bold text-xs uppercase border-2 border-ink transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 bg-ink text-white hover:bg-flash hover:text-ink px-6 py-2.5 font-mono font-bold text-xs uppercase border-2 border-ink transition-colors shadow-sm"
         >
           <span>EXPLORE CATALOGUE</span>
           <ArrowRight className="w-4 h-4" />
@@ -229,7 +229,7 @@ export function CartView({ onClose, isPage = false }: CartViewProps) {
         <Link
           href="/checkout"
           onClick={onClose}
-          className="w-full flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white py-3.5 px-4 font-mono font-bold text-sm uppercase border-2 border-ink shadow-md transition-all active:translate-y-0.5 text-center"
+          className="w-full flex items-center justify-center gap-2 bg-ink text-white hover:bg-flash hover:text-ink py-3.5 px-4 font-mono font-bold text-sm uppercase border-2 border-ink shadow-md transition-all active:translate-y-0.5 text-center"
         >
           <span>PROCEED TO CHECKOUT</span>
           <ArrowRight className="w-4 h-4" />

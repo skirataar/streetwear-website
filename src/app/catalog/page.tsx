@@ -45,7 +45,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Page Title Header — sits on hype green body */}
       <div className="border-b-4 border-ink pb-6 mb-8">
-        <div className="text-xs font-mono font-bold uppercase text-flash tracking-widest mb-1">
+        <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
           // ARCHIVE CATALOGUE • INDEX
         </div>
         <h1 className="font-display text-4xl sm:text-7xl uppercase tracking-tight text-ink">
@@ -62,7 +62,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
       {/* Product Grid */}
       {sortedProducts.length === 0 ? (
         <div className="text-center py-20 bg-white border-2 border-ink font-mono space-y-3">
-          <div className="text-flash text-xl font-bold">NO MATCHING DROPS FOUND</div>
+          <div className="text-ink text-xl font-bold">NO MATCHING DROPS FOUND</div>
           <p className="text-xs text-ink/60 font-body">
             No items matched your current filter criteria. Try resetting filters to view all archive pieces.
           </p>
