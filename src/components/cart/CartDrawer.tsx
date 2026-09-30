@@ -36,8 +36,8 @@ export function CartDrawer() {
           {/* Header */}
           <div className="p-4 sm:p-6 bg-white border-b-2 border-ink flex items-center justify-between sticky top-0 z-10">
             <div className="flex items-center gap-2">
-              <ShoppingBag className="w-5 h-5 text-flash" />
-              <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
+              <ShoppingBag className="w-5 h-5 text-flash shrink-0" />
+              <h2 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-ink truncate">
                 YOUR CASSETTE DECK ({totalItemsCount})
               </h2>
             </div>

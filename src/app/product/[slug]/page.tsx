@@ -130,7 +130,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <VariantSelector product={product} />
 
           {/* Value Highlights */}
-          <div className="grid grid-cols-2 gap-3 pt-4 border-t-2 border-ink/20 text-[11px] font-mono text-ink font-bold">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-4 border-t-2 border-ink/20 text-[11px] sm:text-xs font-mono text-ink font-bold">
             <div className="flex items-center gap-2">
               <Truck className="w-4 h-4 text-ink shrink-0" />
               <span>FREE DELIVERY OVER ₹1,999</span>

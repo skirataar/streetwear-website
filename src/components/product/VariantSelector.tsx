@@ -217,15 +217,27 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       </div>
 
       {/* Streetwear Garment Specs */}
-      <div className="bg-white border-2 border-ink p-4 space-y-3 text-xs text-ink">
-        <div className="font-bold text-ink uppercase tracking-wider border-b border-ink/20 pb-1">
+      <div className="bg-white border-2 border-ink p-3 sm:p-4 space-y-2.5 sm:space-y-3 text-ink">
+        <div className="font-bold text-[11px] sm:text-xs uppercase tracking-wider border-b border-ink/20 pb-1">
           // ARCHIVE GARMENT SPECIFICATIONS
         </div>
-        <ul className="space-y-1.5 text-ink font-medium text-[11px]">
-          <li>• <strong>FABRIC:</strong> 240 GSM 100% Combed Compact Cotton</li>
-          <li>• <strong>PRINT:</strong> High-Density Plastisol &amp; Vintage Screenprint</li>
-          <li>• <strong>WASH:</strong> Pre-shrunk silicone &amp; enzyme bio-washed</li>
-          <li>• <strong>ORIGIN:</strong> Knitted, dyed, and crafted in Tirupur, India</li>
+        <ul className="space-y-1 sm:space-y-1.5 text-ink font-medium text-[10px] sm:text-[11px] tracking-tight sm:tracking-normal leading-snug sm:leading-relaxed">
+          <li className="flex items-start gap-1.5">
+            <span className="shrink-0">•</span>
+            <span><strong>FABRIC:</strong> 240 GSM 100% Combed Compact Cotton</span>
+          </li>
+          <li className="flex items-start gap-1.5">
+            <span className="shrink-0">•</span>
+            <span><strong>PRINT:</strong> High-Density Plastisol &amp; Vintage Screenprint</span>
+          </li>
+          <li className="flex items-start gap-1.5">
+            <span className="shrink-0">•</span>
+            <span><strong>WASH:</strong> Pre-shrunk silicone &amp; enzyme bio-washed</span>
+          </li>
+          <li className="flex items-start gap-1.5">
+            <span className="shrink-0">•</span>
+            <span><strong>ORIGIN:</strong> Knitted, dyed, and crafted in Tirupur, India</span>
+          </li>
         </ul>
       </div>
     </div>

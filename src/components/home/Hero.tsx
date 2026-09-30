@@ -23,20 +23,24 @@ export function Hero({ latestProduct }: HeroProps) {
         <div className="absolute inset-0 crt-overlay z-20 pointer-events-none" />
 
         {/* Top CRT Hardware Header Bar */}
-        <div className="bg-ink/90 border-b-2 border-white/10 px-4 py-2 flex items-center justify-between z-30 relative font-mono text-[11px] text-white/80">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-hype font-bold">
-              <span className="w-2 h-2 rounded-full bg-hype animate-ping" />
-              {latestProduct ? `LIVE DROP: ${latestProduct.name.toUpperCase()}` : "THE HYPE CO. BROADCAST"}
+        <div className="bg-ink/90 border-b-2 border-white/10 px-3 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between z-30 relative font-mono text-[10px] sm:text-[11px] text-white/80 whitespace-nowrap overflow-hidden">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <span className="flex items-center gap-1.5 text-hype font-bold truncate">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-hype animate-ping shrink-0" />
+              <span className="truncate">
+                {latestProduct ? `LIVE DROP: ${latestProduct.name.toUpperCase()}` : "THE HYPE CO. BROADCAST"}
+              </span>
             </span>
             <span className="hidden sm:inline text-white/30">|</span>
             <span className="hidden sm:inline">PAL-B // 625 LINES</span>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="bg-white/10 text-white px-2 py-0.5 rounded-sm border border-white/20 text-[10px] uppercase font-bold">
+          <div className="flex items-center gap-2 shrink-0 text-[9px] sm:text-[10px]">
+            <span className="bg-white/10 text-white px-1.5 sm:px-2 py-0.5 rounded-sm border border-white/20 uppercase font-bold shrink-0 whitespace-nowrap">
               MONO SOUND
             </span>
-            <span className="text-neutral-400">VOL [ ■■■■□□ ]</span>
+            <span className="text-neutral-400 shrink-0 whitespace-nowrap hidden min-[360px]:inline">
+              VOL [ ■■■■□□ ]
+            </span>
           </div>
         </div>
 
@@ -58,9 +62,9 @@ export function Hero({ latestProduct }: HeroProps) {
 
           {/* Overlaid Headline & Interactive Elements */}
           <div className="relative z-20 max-w-4xl space-y-4 sm:space-y-6">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 py-1 text-xs font-mono font-bold tracking-widest uppercase border border-white/20 shadow-sm">
-              <Flame className="w-3.5 h-3.5 text-white" />
-              <span>{dropBadge}</span>
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs font-mono font-bold tracking-wider sm:tracking-widest uppercase border border-white/20 shadow-sm max-w-full">
+              <Flame className="w-3.5 h-3.5 text-white shrink-0" />
+              <span className="truncate">{dropBadge}</span>
             </div>
 
             {/* Large Anton Headline */}
@@ -97,14 +101,14 @@ export function Hero({ latestProduct }: HeroProps) {
         </div>
 
         {/* Bottom CRT Bezel Control Knobs */}
-        <div className="bg-ink border-t-2 border-white/10 px-4 py-2.5 flex items-center justify-between font-mono text-[10px] text-white/40 z-30 relative">
-          <div className="flex items-center gap-4">
+        <div className="bg-ink border-t-2 border-white/10 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between font-mono text-[9px] sm:text-[10px] text-white/40 z-30 relative whitespace-nowrap overflow-hidden">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
             <span>TUNING: 98.4 MHZ</span>
             <span>•</span>
             <span>V-HOLD: LOCKED</span>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-hype animate-pulse" />
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <span className="inline-block w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-hype animate-pulse" />
             <span className="text-white/60 font-bold uppercase">ON AIR</span>
           </div>
         </div>

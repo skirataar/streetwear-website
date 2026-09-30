@@ -12,17 +12,19 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full bg-hype border-b-2 border-ink">
       {/* Top Banner / Ticker — black bg */}
-      <div className="bg-black text-white text-[11px] sm:text-xs font-mono font-bold tracking-wider py-1 px-4 flex items-center justify-between border-b border-white/10">
-        <div className="flex items-center gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-white animate-pulse" />
-          <span className="uppercase">STD PCO // LIVE BROADCAST ARCHIVE</span>
+      <div className="bg-black text-white text-[10px] sm:text-xs font-mono font-bold tracking-tight sm:tracking-wider py-1.5 px-3 sm:px-4 flex items-center justify-between border-b border-white/10 whitespace-nowrap overflow-hidden">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white animate-pulse shrink-0" />
+          <span className="uppercase truncate">
+            <span className="hidden xs:inline">STD PCO // </span>LIVE BROADCAST ARCHIVE
+          </span>
         </div>
-        <div className="hidden sm:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4 text-xs">
           <span>FREE SHIPPING OVER ₹1,999</span>
           <span>•</span>
           <span>100% HEAVYWEIGHT COTTON</span>
         </div>
-        <div className="text-[10px] uppercase tracking-widest bg-white/10 text-white px-1.5 py-0.5 rounded-sm border border-white/20">
+        <div className="text-[9px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest bg-white/10 text-white px-2 py-0.5 rounded-sm border border-white/20 shrink-0 whitespace-nowrap">
           IND // 90S-00S
         </div>
       </div>

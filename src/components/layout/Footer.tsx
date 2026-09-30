@@ -53,7 +53,7 @@ export function Footer() {
             <p className="text-xs font-body text-[#EBE6DF]/80 leading-relaxed max-w-md">
               An archive of Indian street memories — from the hypnotic Doordarshan test signal tone to the yellow-black STD booth coin drops and Sharjah desert storm centuries. Manufactured in Tirupur with heavyweight Indian cotton.
             </p>
-            <div className="font-mono text-[11px] text-[#EBE6DF]/80 space-y-1">
+            <div className="font-mono text-[9px] sm:text-[11px] tracking-tight sm:tracking-normal text-[#EBE6DF]/80 space-y-1">
               <div>// CASSETTE SIDE A: DD NATIONAL • SHAKTIMAAN • CRICKET</div>
               <div>// CASSETTE SIDE B: CYBERCAFÉ 56KBPS • STD PCO • WINAMP</div>
             </div>
@@ -115,16 +115,16 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#EBE6DF]/20 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-[#EBE6DF]/70 gap-4">
-          <div>
+        <div className="pt-8 border-t border-[#EBE6DF]/20 flex flex-col sm:flex-row items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#EBE6DF]/70 gap-3 sm:gap-4 text-center sm:text-left">
+          <div className="tracking-tight sm:tracking-normal">
             © {new Date().getFullYear()} THE HYPE CO. STREETWEAR. ALL RIGHTS RESERVED.
           </div>
-          <div className="flex items-center gap-4">
-            <span>RAZORPAY VERIFIED</span>
-            <span>•</span>
-            <span>MADE IN BHARAT</span>
-            <span>•</span>
-            <span>PAL / NTSC COMPLIANT</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 gap-y-1 text-[9px] sm:text-[11px]">
+            <span className="whitespace-nowrap">RAZORPAY VERIFIED</span>
+            <span className="text-[#EBE6DF]/40">•</span>
+            <span className="whitespace-nowrap">MADE IN BHARAT</span>
+            <span className="text-[#EBE6DF]/40">•</span>
+            <span className="whitespace-nowrap">PAL / NTSC COMPLIANT</span>
           </div>
         </div>
       </div>
