@@ -68,10 +68,10 @@ export function Hero({ latestProduct }: HeroProps) {
             </div>
 
             {/* Large Anton Headline */}
-            <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase leading-[0.95] sm:leading-[0.9] text-white drop-shadow-md">
-              POP CULTURE <br />
-              <span className="text-hype">FROM THE 90S</span> <br />
-              STREETS OF BHARAT
+            <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase text-white drop-shadow-md">
+              <span className="block overflow-hidden leading-[1.02]">POP CULTURE</span>
+              <span className="block overflow-hidden leading-[1.02] text-hype">FROM THE 90S</span>
+              <span className="block overflow-hidden leading-[1.02]">STREETS OF BHARAT</span>
             </h1>
 
             <p className="font-body text-xs sm:text-lg md:text-xl text-white/90 max-w-2xl font-medium leading-relaxed">

@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import { useAuth } from "@/lib/auth-context";
 import { ShoppingBag, Menu, X, User } from "lucide-react";
 
 export function Header() {
   const { totalItemsCount, setIsCartOpen } = useCart();
+  const { customer } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -74,12 +76,15 @@ export function Header() {
         {/* Action Buttons: Account & Cart */}
         <div className="flex items-center gap-1.5 sm:gap-3">
           <Link
-            href="/account/orders"
-            className="p-1.5 sm:p-2 text-ink hover:text-ink/70 transition-colors rounded-sm hover:bg-ink/10"
-            aria-label="Account and orders"
-            title="My Orders"
+            href={customer ? "/account" : "/login"}
+            className="relative p-1.5 sm:p-2 text-ink hover:text-ink/70 transition-colors rounded-sm hover:bg-ink/10"
+            aria-label={customer ? `Account (${customer.name || customer.email})` : "Sign In / Register"}
+            title={customer ? `My Account (${customer.name || customer.email})` : "Sign In / Register"}
           >
             <User className="w-5 h-5" />
+            {customer && (
+              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-emerald-500 border border-ink" />
+            )}
           </Link>
 
           <button
@@ -117,11 +122,12 @@ export function Header() {
             ▶ ABOUT US
           </Link>
           <Link
-            href="/account/orders"
+            href={customer ? "/account" : "/login"}
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-1.5 font-bold text-ink/70 border-t border-ink/20 pt-2 hover:underline"
+            className="block py-1.5 font-bold text-ink/70 border-t border-ink/20 pt-2 hover:underline flex items-center justify-between"
           >
-            ▶ MY ACCOUNT / ORDERS
+            <span>{customer ? `▶ MY ACCOUNT (${(customer.name || customer.email).split(" ")[0]})` : "▶ SIGN IN / REGISTER"}</span>
+            {customer && <span className="text-[10px] bg-emerald-500 text-white px-1.5 py-0.5 font-mono">ACTIVE</span>}
           </Link>
         </div>
       )}

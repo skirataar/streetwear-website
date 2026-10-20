@@ -32,6 +32,24 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
+
+  /* Accessible high-contrast text selection styles */
+  ::selection {
+    background-color: var(--ink-color);
+    color: var(--bg-color);
+  }
+
+  .bg-ink::selection,
+  .bg-ink *::selection,
+  [class*="bg-ink"]::selection,
+  [class*="bg-ink"] *::selection,
+  .bg-black::selection,
+  .bg-black *::selection,
+  [class*="bg-black"]::selection,
+  [class*="bg-black"] *::selection {
+    background-color: var(--bg-color);
+    color: var(--ink-color);
+  }
 }
 
 /* CRT scanlines effect */
@@ -137,4 +155,50 @@ select:focus-visible {
     animation: none !important;
     transform: none !important;
   }
+}
+
+/* Google Places Autocomplete Neo-Brutalist Styling */
+.pac-container {
+  background-color: #ffffff !important;
+  border: 2px solid #141414 !important;
+  border-radius: 0px !important;
+  box-shadow: 4px 4px 0px #141414 !important;
+  font-family: var(--font-karla), sans-serif !important;
+  margin-top: 4px !important;
+  z-index: 99999 !important;
+}
+
+.pac-item {
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  border-bottom: 1px solid #141414/15 !important;
+  cursor: pointer !important;
+  color: #141414 !important;
+}
+
+.pac-item:hover,
+.pac-item-selected {
+  background-color: #d8f870 !important;
+  color: #141414 !important;
+}
+
+.pac-item-query {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #141414 !important;
+  text-transform: uppercase !important;
+}
+
+.pac-matched {
+  font-weight: 900 !important;
+  text-decoration: underline !important;
+}
+
+/* Utility to hide scrollbars cleanly while preserving scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }

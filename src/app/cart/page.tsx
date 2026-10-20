@@ -11,10 +11,10 @@ export default function CartPage() {
       {/* Top Header */}
       <div className="flex items-center justify-between border-b-4 border-ink pb-4 mb-6">
         <div>
-          <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
+          <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1.5">
             // CASSETTE DECK
           </div>
-          <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink">
+          <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink overflow-hidden leading-[1.05]">
             SHOPPING CART
           </h1>
         </div>

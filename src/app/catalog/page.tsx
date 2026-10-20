@@ -45,10 +45,10 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Page Title Header — sits on hype green body */}
       <div className="border-b-4 border-ink pb-6 mb-8">
-        <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1">
+        <div className="text-xs font-mono font-bold uppercase text-ink tracking-widest mb-1.5">
           // ARCHIVE CATALOGUE • INDEX
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl md:text-7xl uppercase tracking-tight text-ink">
+        <h1 className="font-display text-3xl sm:text-5xl md:text-7xl uppercase tracking-tight text-ink overflow-hidden leading-[1.05]">
           ALL DROPS &amp; CASSETTE CUTS
         </h1>
         <p className="font-body text-xs sm:text-base text-ink/70 max-w-2xl mt-2 leading-relaxed">

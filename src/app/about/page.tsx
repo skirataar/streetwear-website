@@ -71,9 +71,9 @@ export default function AboutPage() {
             <span>DOSSIER // THE HYPE CO. STREETWEAR</span>
           </div>
 
-          <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tight text-ink leading-none">
-            HEAVYWEIGHT FIT. <br />
-            NO COMPROMISE.
+          <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tight text-ink">
+            <span className="block overflow-hidden leading-[1.02]">HEAVYWEIGHT FIT.</span>
+            <span className="block overflow-hidden leading-[1.02]">NO COMPROMISE.</span>
           </h1>
 
           <p className="mt-6 text-sm sm:text-base font-body text-ink/80 max-w-3xl leading-relaxed">

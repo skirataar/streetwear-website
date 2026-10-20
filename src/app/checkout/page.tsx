@@ -5,8 +5,10 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Script from "next/script";
 import { useCart } from "@/lib/cart-context";
+import { useAuth } from "@/lib/auth-context";
 import { formatPaise } from "@/lib/currency";
 import { ShieldCheck, ArrowLeft, Lock, ArrowRight } from "lucide-react";
+import { AddressAutocomplete } from "@/components/checkout/MapplsAddressAutocomplete";
 
 declare global {
   interface Window {
@@ -53,6 +55,7 @@ export default function CheckoutPage() {
     promoCode,
     clearCart,
   } = useCart();
+  const { customer } = useAuth();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -69,6 +72,22 @@ export default function CheckoutPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [razorpayScriptLoaded, setRazorpayScriptLoaded] = useState(false);
 
+  // Auto-populate form if customer is logged in
+  useEffect(() => {
+    if (customer) {
+      setFormData((prev) => ({
+        fullName: prev.fullName || customer.name || "",
+        email: prev.email || customer.email || "",
+        phone: prev.phone || customer.phone || customer.shipping?.phone || "",
+        addressLine1: prev.addressLine1 || customer.shipping?.address_1 || "",
+        addressLine2: prev.addressLine2 || customer.shipping?.address_2 || "",
+        city: prev.city || customer.shipping?.city || "",
+        state: prev.state !== "Delhi NCR" ? prev.state : (customer.shipping?.state || "Delhi NCR"),
+        pincode: prev.pincode || customer.shipping?.postcode || "",
+      }));
+    }
+  }, [customer]);
+
   useEffect(() => {
     if (items.length === 0 && !isLoading) {
       // Let user fill or navigate back
@@ -80,6 +99,34 @@ export default function CheckoutPage() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Instant India Post Pincode Auto-Resolution
+    if (name === "pincode" && value.length === 6 && /^\d{6}$/.test(value)) {
+      fetch(`https://api.postalpincode.in/pincode/${value}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data[0]?.Status === "Success" && data[0]?.PostOffice?.length > 0) {
+            const po = data[0].PostOffice[0];
+            const detectedCity = po.District || po.Division || "";
+            const detectedState = po.State || "";
+            const matchedState = INDIAN_STATES.find(
+              (st) =>
+                st.toLowerCase() === detectedState.toLowerCase() ||
+                detectedState.toLowerCase().includes(st.toLowerCase()) ||
+                st.toLowerCase().includes(detectedState.toLowerCase())
+            );
+
+            setFormData((prev) => ({
+              ...prev,
+              city: prev.city || detectedCity,
+              state: matchedState || prev.state,
+            }));
+          }
+        })
+        .catch(() => {
+          // Silent fallback
+        });
+    }
   };
 
   const handleCheckoutSubmit = async (e: React.FormEvent) => {
@@ -276,10 +323,10 @@ export default function CheckoutPage() {
         {/* Top Header */}
         <div className="flex items-center justify-between border-b-4 border-ink pb-4 mb-8">
           <div>
-            <div className="text-xs font-bold uppercase text-ink/70 tracking-widest mb-1">
+            <div className="text-xs font-bold uppercase text-ink/70 tracking-widest mb-1.5">
               // EXPRESS CHECKOUT • GUEST &amp; AUTH
             </div>
-            <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink">
+            <h1 className="font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-ink overflow-hidden leading-[1.05]">
               SHIPPING &amp; PAYMENT
             </h1>
           </div>
@@ -312,6 +359,29 @@ export default function CheckoutPage() {
               </h2>
               <span className="text-[11px] text-ink/40">GUEST CHECKOUT SUPPORTED</span>
             </div>
+
+            {/* Account Quick-Fill Status / Login Prompt */}
+            {customer ? (
+              <div className="flex items-center justify-between bg-emerald-50 border border-emerald-300 p-2 text-[11px] font-mono text-emerald-900">
+                <span className="flex items-center gap-1.5 font-bold uppercase">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  LOGGED IN AS {customer.name || customer.email}
+                </span>
+                <span className="text-[10px] text-emerald-700 uppercase font-semibold">
+                  SAVED PROFILE &amp; ADDRESS AUTO-FILLED
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center justify-between bg-hype/20 border border-ink/20 p-2 text-[11px] font-mono">
+                <span className="text-ink/70 uppercase">HAVE A HYPE SUBSCRIBER ACCOUNT?</span>
+                <Link
+                  href="/login?redirect=/checkout"
+                  className="font-bold underline text-ink uppercase hover:text-ink/70"
+                >
+                  LOG IN FOR 1-CLICK AUTOFILL &rarr;
+                </Link>
+              </div>
+            )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="space-y-1">
@@ -372,6 +442,13 @@ export default function CheckoutPage() {
               </h2>
               <span className="text-[11px] text-flash font-bold">EXPRESS COURIER</span>
             </div>
+
+            {/* MapmyIndia (Mappls) & GPS Address Autofill */}
+            <AddressAutocomplete
+              formData={formData}
+              setFormData={setFormData}
+              indianStates={INDIAN_STATES}
+            />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="sm:col-span-2 space-y-1">

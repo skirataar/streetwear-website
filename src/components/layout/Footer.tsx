@@ -47,7 +47,7 @@ export function Footer() {
                 THE HYPE // CO.
               </span>
               <span className="bg-flash text-ink text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-sm">
-                EST. 1998
+                EST. 2026
               </span>
             </div>
             <p className="text-xs font-body text-[#EBE6DF]/80 leading-relaxed max-w-md">

@@ -29,10 +29,10 @@ function SuccessContent() {
           <div className="inline-flex items-center justify-center w-12 h-12 bg-hype border-2 border-ink rounded-full mb-1">
             <CheckCircle2 className="w-7 h-7 text-ink" />
           </div>
-          <div className="text-xs font-bold uppercase text-flash tracking-widest">
+          <div className="text-xs font-bold uppercase text-flash tracking-widest mb-1.5">
             // TRANSMISSION SUCCESSFUL • PAYMENT CAPTURED
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl uppercase tracking-tight text-ink">
+          <h1 className="font-display text-3xl sm:text-4xl uppercase tracking-tight text-ink overflow-hidden leading-[1.05]">
             ORDER CONFIRMED
           </h1>
           <div className="text-xs font-bold text-ink/50 uppercase">

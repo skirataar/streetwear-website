@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Karla, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
+import { AuthProvider } from "@/lib/auth-context";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
@@ -55,15 +56,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${karla.variable} ${spaceMono.variable} antialiased selection:bg-flash selection:text-white`}
+      className={`${anton.variable} ${karla.variable} ${spaceMono.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-hype text-ink">
-        <CartProvider>
-          <Header />
-          <CartDrawer />
-          <main className="flex-1 w-full">{children}</main>
-          <Footer />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Header />
+            <CartDrawer />
+            <main className="flex-1 w-full">{children}</main>
+            <Footer />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

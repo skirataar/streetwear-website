@@ -82,7 +82,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
               <div className="font-mono text-xs font-bold text-flash uppercase tracking-widest">
                 ERA {eraNum} // BROADCAST ARCHIVE
               </div>
-              <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tight text-white leading-none">
+              <h1 className="font-display text-3xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-tight text-white overflow-hidden leading-[1.05]">
                 {col.name}
               </h1>
               {col.description && (
